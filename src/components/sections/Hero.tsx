@@ -56,7 +56,7 @@ const Hero = () => {
       <ParticleBackground />
       {/* GIF decorativo en el lado derecho detrás del texto */}
       <img 
-        src="art-glow.gif" 
+        src={import.meta.env.BASE_URL + 'art-glow.gif'} 
         alt="Art Glow" 
         className="absolute right-[4vw] top-[-4vw] w-[60vw] max-w-[700px] min-w-[320px] h-auto opacity-100 pointer-events-none select-none z-0"
         style={{mixBlendMode:'screen'}}
@@ -100,7 +100,7 @@ const Hero = () => {
                 whileHover="hover"
               >
                 <img 
-                  src="enrique-pic.jpeg" 
+                  src={import.meta.env.BASE_URL + 'enrique-pic.jpeg'} 
                   alt="Enrique Donaire" 
                   className="w-full h-full object-cover"
                 />
