@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, Download } from 'lucide-react';
 import { Link } from 'react-scroll';
 
 const Footer = () => {
@@ -104,6 +104,14 @@ const Footer = () => {
               className="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
             >
               <Mail size={20} />
+            </a>
+            <a
+              href={import.meta.env.BASE_URL + 'Enrique-Donaire-Full-Stack-Web-Dev-2025.pdf'}
+              download
+              aria-label="Descargar CV"
+              className="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+            >
+              <Download size={20} />
             </a>
           </div>
         </div>

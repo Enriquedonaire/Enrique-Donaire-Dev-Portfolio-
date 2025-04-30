@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-scroll';
-import { Menu, X, Moon, Sun, Github, Linkedin, Mail } from 'lucide-react';
+import { Menu, X, Moon, Sun, Github, Linkedin, Mail, Download } from 'lucide-react';
 import { useTheme } from '@components/providers/ThemeProvider';
 import { NavItem } from '@/types';
 
@@ -144,6 +144,14 @@ const Header = () => {
             >
               <Mail size={20} />
             </a>
+            <a
+              href={import.meta.env.BASE_URL + 'Enrique-Donaire-Full-Stack-Web-Dev-2025.pdf'}
+              download
+              aria-label="Descargar CV"
+              className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+            >
+              <Download size={20} />
+            </a>
           </div>
           
           <button
@@ -228,6 +236,14 @@ const Header = () => {
                     className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
                   >
                     <Mail size={24} />
+                  </a>
+                  <a
+                    href={import.meta.env.BASE_URL + 'Enrique-Donaire-Full-Stack-Web-Dev-2025.pdf'}
+                    download
+                    aria-label="Descargar CV"
+                    className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+                  >
+                    <Download size={24} />
                   </a>
                 </div>
               </div>

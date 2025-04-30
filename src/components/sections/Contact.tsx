@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Section from '@components/common/Section';
-import { Check, AlertCircle, Send, Phone, Mail, MapPin } from 'lucide-react';
+import { Check, AlertCircle, Send, Phone, Mail, MapPin, Download } from 'lucide-react';
 import emailjs from 'emailjs-com';
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -161,6 +161,14 @@ const Contact = () => {
                       <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
                       <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
                     </svg>
+                  </a>
+                  <a
+                    href={import.meta.env.BASE_URL + 'Enrique-Donaire-Full-Stack-Web-Dev-2025.pdf'}
+                    download
+                    className="bg-gray-100 dark:bg-gray-800 p-3 rounded-full text-gray-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/30 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                    aria-label="Descargar CV"
+                  >
+                    <Download size={24} />
                   </a>
                 </div>
               </div>
