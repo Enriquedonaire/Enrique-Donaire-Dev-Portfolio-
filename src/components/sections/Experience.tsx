@@ -96,7 +96,6 @@ const Experience = () => {
           stretch: 0,
           depth: 100,
           modifier: 1,
-          slideShadows: true,
         }}
         pagination={true}
         modules={[EffectCoverflow, Pagination]}
@@ -108,7 +107,7 @@ const Experience = () => {
           className="!flex !justify-center !items-center !p-0"
           style={{ width: '800px', height: '400px' }}
         >
-          <div className="relative w-full h-full rounded-2xl overflow-hidden group m-0 shadow-2xl shadow-black/30">
+          <div className="relative w-full h-full rounded-2xl overflow-hidden group m-0 shadow-xl">
             {/* Imagen */}
             <img
               src={experience.image}
