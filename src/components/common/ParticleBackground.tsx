@@ -1,34 +1,15 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback } from 'react';
 import Particles from "react-particles";
-import type { Container, Engine } from "tsparticles-engine";
+import type { Engine } from "tsparticles-engine";
 import { loadSlim } from "tsparticles-slim";
 import { useTheme } from '@components/providers/ThemeProvider';
 
 const ParticleBackground = () => {
   const { theme } = useTheme();
-  const [isInitialized, setIsInitialized] = useState(false);
-  
+
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
-    setIsInitialized(true);
   }, []);
-
-  useEffect(() => {
-    const container = document.querySelector<Container>('canvas.tsparticles-canvas-el');
-    
-    if (isInitialized && container) {
-      const particles = container.particles;
-      if (particles) {
-        particles.options.particles.color.value = theme === 'dark' 
-          ? ['#36aef8', '#8c4fff'] 
-          : ['#0076c6', '#7c2cf9'];
-        particles.options.particles.links.color = theme === 'dark'
-          ? '#757575'
-          : '#dbdbdb';
-        particles.refresh();
-      }
-    }
-  }, [theme, isInitialized]);
 
   return (
     <div className="particles-container">

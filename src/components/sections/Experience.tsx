@@ -33,7 +33,7 @@ const experiences: ExperienceType[] = [
     company: "isEazy LMS",
     period: "March 2023 - February 2024",
     location: "Remote - Spain",
-    image: "/isEazy LMS.jpeg",
+    image: "/iseazy-lms.jpeg",
     description: [
       "Directed the evolution and optimization of a Progressive Web Application (PWA), prioritizing mobile-first design and scalability",
       "Drove success across 14 Agile-Scrum sprints, ensuring the seamless delivery of features through active participation in sprint planning, stand-ups, and presentations",

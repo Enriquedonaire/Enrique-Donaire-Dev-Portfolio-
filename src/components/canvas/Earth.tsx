@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 const Earth = ({ scale = 1.2 }) => {
-  const earth = useGLTF("/plant scene/scene.gltf");
+  const earth = useGLTF("/planet-scene/scene.gltf");
   return (
     <primitive object={earth.scene} scale={scale} position-y={0} rotation-y={0} />
   );

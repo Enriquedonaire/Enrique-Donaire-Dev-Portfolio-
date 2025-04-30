@@ -56,7 +56,7 @@ const Hero = () => {
       <ParticleBackground />
       {/* GIF decorativo en el lado derecho detrás del texto */}
       <img 
-        src="/Art Glow GIF by IndieRocktopus.gif" 
+        src="/art-glow.gif" 
         alt="Art Glow" 
         className="absolute right-[4vw] top-[-4vw] w-[60vw] max-w-[700px] min-w-[320px] h-auto opacity-100 pointer-events-none select-none z-0"
         style={{mixBlendMode:'screen'}}
@@ -81,7 +81,7 @@ const Hero = () => {
               {/* Image container */}
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20 dark:border-black/20">
                 <img 
-                  src="/EnriquePic.jpeg" 
+                  src="/enrique-pic.jpeg" 
                   alt="Enrique Donaire" 
                   className="w-full h-full object-cover"
                 />

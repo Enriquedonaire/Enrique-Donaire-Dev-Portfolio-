@@ -21,18 +21,13 @@ const skillsData = [
 ];
 
 const SkillsTornado = () => {
-  const [isAnimating, setIsAnimating] = useState(false);
   const [rotation, setRotation] = useState(0);
 
   useEffect(() => {
-    // Start animation after component mounts
-    setIsAnimating(true);
-    
     // Create rotation animation
     const rotationInterval = setInterval(() => {
       setRotation(prev => (prev + 0.5) % 360);
     }, 50);
-    
     return () => clearInterval(rotationInterval);
   }, []);
 
