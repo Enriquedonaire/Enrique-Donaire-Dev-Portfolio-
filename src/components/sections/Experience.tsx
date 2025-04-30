@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion';
 import Section from '@components/common/Section';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Pagination } from 'swiper/modules';
+import { EffectCoverflow, EffectCube, Pagination } from 'swiper/modules';
 import { Experience as ExperienceType } from '@/types';
 import { Calendar, MapPin } from 'lucide-react';
-
+import { useEffect, useState } from 'react';
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
+import 'swiper/css/effect-cube';
 import 'swiper/css/pagination';
 
 const experiences: ExperienceType[] = [
@@ -71,6 +72,14 @@ const experiences: ExperienceType[] = [
 ];
 
 const Experience = () => {
+  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobileOrTablet(window.innerWidth < 1024);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
   return (
     <Section
       id="experience"
@@ -80,70 +89,84 @@ const Experience = () => {
     >
       <motion.div 
         className="w-full max-w-screen-6xl mx-auto px-4 md:px-8 rounded-2xl" 
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
       >
-      <Swiper
-        effect={'coverflow'}
-        grabCursor={true}
-        centeredSlides={true} 
-        slidesPerView={3} 
-        initialSlide={1} 
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-        }}
-        pagination={true}
-        modules={[EffectCoverflow, Pagination]}
-        className="py-1 w-screen-xl max-w-screen-2xl" 
-      >
-        {experiences.map((experience) => (
-        <SwiperSlide 
-          key={experience.id} 
-          className="!flex !justify-center !items-center !p-0"
-          style={{ width: '800px', height: '400px' }}
+        <Swiper
+          key={isMobileOrTablet ? 'cube' : 'coverflow'}
+          effect={isMobileOrTablet ? 'cube' : 'coverflow'}
+          grabCursor={true}
+          cubeEffect={
+            isMobileOrTablet
+              ? {
+                  shadow: true,
+                  slideShadows: true,
+                  shadowOffset: 20,
+                  shadowScale: 0.94,
+                }
+              : undefined
+          }
+          coverflowEffect={
+            !isMobileOrTablet
+              ? {
+                  rotate: 50,
+                  stretch: 0,
+                  depth: 100,
+                  modifier: 1,
+                }
+              : undefined
+          }
+          slidesPerView={isMobileOrTablet ? 1 : 3}
+          initialSlide={1}
+          pagination={true}
+          modules={isMobileOrTablet ? [EffectCube, Pagination] : [EffectCoverflow, Pagination]}
+          className="py-1 w-full max-w-screen-2xl"
         >
-          <div className="relative w-full h-full rounded-2xl overflow-hidden group m-0 shadow-xl">
-            {/* Imagen */}
-            <img
-              src={experience.image}
-              alt={experience.company}
-              className="absolute inset-0 w-full h-full object-cover rounded-2xl z-0"
-            />
-            {/* Overlay gradiente animado - cubre todo el slide sin márgenes */}
-            <div className="absolute inset-0 w-full h-full rounded-2xl pointer-events-none before:content-[''] before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-r before:from-[#AA367C] before:to-[#4A2FBD] before:opacity-85 before:transition-all before:duration-400 before:ease-in-out before:h-0 group-hover:before:h-full before:w-full before:z-10"></div>
-            {/* Texto sobre la imagen, ocupa todo el slide */}
-            <div className="absolute inset-0 flex flex-col justify-center items-center w-full h-full text-center opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out z-20 p-8">
-              <h3 className="text-3xl font-bold text-white mb-2 drop-shadow-lg">{experience.title}</h3>
-              <span className="italic font-normal text-lg text-white mb-2 drop-shadow">{experience.company}</span>
-              <div className="flex items-center justify-center text-white text-sm mb-2 gap-4">
-                <span className="flex items-center"><Calendar size={16} className="mr-1" />{experience.period}</span>
-                <span className="flex items-center"><MapPin size={16} className="mr-1" />{experience.location}</span>
+          {experiences.map((experience) => (
+            <SwiperSlide 
+              key={experience.id} 
+              className="!flex !justify-center !items-center !p-0"
+              style={{ width: '800px', height: '400px' }}
+            >
+              <div className="relative w-full h-full rounded-2xl overflow-hidden group m-0 shadow-xl">
+                {/* Imagen */}
+                <img
+                  src={experience.image}
+                  alt={experience.company}
+                  className="absolute inset-0 w-full h-full object-cover rounded-2xl z-0"
+                />
+                {/* Overlay gradiente animado - cubre todo el slide sin márgenes */}
+                <div className="absolute inset-0 w-full h-full rounded-2xl pointer-events-none before:content-[''] before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-r before:from-[#AA367C] before:to-[#4A2FBD] before:opacity-85 before:transition-all before:duration-400 before:ease-in-out before:h-0 group-hover:before:h-full before:w-full before:z-10"></div>
+                {/* Texto sobre la imagen, ocupa todo el slide */}
+                <div className="absolute inset-0 flex flex-col justify-center items-center w-full h-full text-center opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out z-20 p-8">
+                  <h3 className="text-3xl font-bold text-white mb-2 drop-shadow-lg">{experience.title}</h3>
+                  <span className="italic font-normal text-lg text-white mb-2 drop-shadow">{experience.company}</span>
+                  <div className="flex items-center justify-center text-white text-sm mb-2 gap-4">
+                    <span className="flex items-center"><Calendar size={16} className="mr-1" />{experience.period}</span>
+                    <span className="flex items-center"><MapPin size={16} className="mr-1" />{experience.location}</span>
+                  </div>
+                  <ul className="text-white text-base mb-4 list-disc pl-5 text-left max-h-40 overflow-y-auto mx-auto w-full max-w-2xl">
+                    {experience.description.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    {experience.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-3 py-1 text-xs bg-white/30 rounded-full text-white border border-white/40"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <ul className="text-white text-base mb-4 list-disc pl-5 text-left max-h-40 overflow-y-auto mx-auto w-full max-w-2xl">
-                {experience.description.map((item, idx) => (
-                  <li key={idx}>{item}</li>
-                ))}
-              </ul>
-              <div className="flex flex-wrap gap-2 justify-center">
-                {experience.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1 text-xs bg-white/30 rounded-full text-white border border-white/40"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        ))}
-      </Swiper>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </motion.div>
     </Section>
   );

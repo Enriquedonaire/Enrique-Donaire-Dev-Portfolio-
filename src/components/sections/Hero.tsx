@@ -5,11 +5,24 @@ import { Link } from 'react-scroll';
 import ParticleBackground from '@components/common/ParticleBackground';
 import Typed from 'typed.js';
 import FlipAvatar from '@components/ui/FlipAvatar';
+import { useTheme } from '@components/providers/ThemeProvider';
+
+function useWindowWidth() {
+  const [width, setWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  return width;
+}
 
 const Hero = () => {
   const typedEl = useRef<HTMLSpanElement>(null);
   const typedInstance = useRef<Typed | null>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const width = useWindowWidth();
+  const { theme } = useTheme();
 
   useEffect(() => {
     if (typedEl.current) {
@@ -57,23 +70,25 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex items-center">
       <ParticleBackground />
 
-      <img
-        src={import.meta.env.BASE_URL + 'art-glow.gif'}
-        alt="Art Glow"
-        className="absolute right-[4vw] top-[-4vw] w-[60vw] max-w-[700px] min-w-[320px] h-auto opacity-100 pointer-events-none select-none z-0"
-        style={{ mixBlendMode: 'screen' }}
-      />
+      {theme === 'dark' && (
+        <img
+          src={import.meta.env.BASE_URL + 'art-glow.gif'}
+          alt="Art Glow"
+          className="absolute right-0 top-0 w-[90vw] max-w-[420px] min-w-[180px] h-auto opacity-80 pointer-events-none select-none z-0"
+          style={{ mixBlendMode: 'screen' }}
+        />
+      )}
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 z-10">
+      <div className="container mx-auto px-2 sm:px-4 lg:px-8 py-8 md:py-32 z-10">
         <motion.div
-          className="max-w-5xl mx-auto text-center flex flex-col md:flex-row items-center gap-8 md:gap-12"
+          className="max-w-3xl mx-auto text-center flex flex-col md:flex-row items-center gap-6 md:gap-12"
           initial="hidden"
           animate="visible"
           variants={containerVariants}
         >
           {/* Profile Picture with Flip Effect */}
           <motion.div 
-            className="relative w-80 h-80 md:w-[26rem] md:h-[26rem] -mt-16 group"
+            className="relative w-32 h-32 xs:w-40 xs:h-40 sm:w-56 sm:h-56 md:w-80 md:h-80 -mt-4 md:-mt-16 group mx-auto flex-shrink-0"
             variants={itemVariants}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -108,23 +123,23 @@ const Hero = () => {
           </motion.div>
 
           {/* Text Content */}
-          <motion.div className="flex-1">
+          <motion.div className="flex-1 mt-6 md:mt-0">
             <motion.h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
+              className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-6"
               variants={itemVariants}
             >
               Hi, I'm <span className="animate-gradient-text">Enrique Donaire</span>
             </motion.h1>
 
             <motion.div
-              className="text-xl sm:text-2xl md:text-3xl text-gray-700 dark:text-gray-300 mb-8"
+              className="text-base xs:text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-3 md:mb-8"
               variants={itemVariants}
             >
               <span ref={typedEl} className="typing"></span>
             </motion.div>
 
             <motion.p
-              className="text-gray-600 dark:text-gray-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto"
+              className="text-gray-600 dark:text-gray-400 text-sm xs:text-base sm:text-lg md:text-xl mb-4 md:mb-10 max-w-2xl mx-auto"
               variants={itemVariants}
             >
               Versatile and results-driven developer with over three years of expertise in
@@ -132,7 +147,7 @@ const Hero = () => {
             </motion.p>
 
             <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-2 md:gap-4 justify-center"
               variants={itemVariants}
             >
               <Link
@@ -159,7 +174,7 @@ const Hero = () => {
       </div>
 
       {/* Scroll Down Arrow */}
-      <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+      <div className="absolute bottom-4 left-0 right-0 flex justify-center md:bottom-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
