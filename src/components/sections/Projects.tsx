@@ -145,7 +145,7 @@ const Projects = () => {
             <SwiperSlide 
               key={project.id} 
               className={`rounded-2xl overflow-hidden shadow-xl ${[
-                'bg-primary-500', // Celeste como los botones
+                'bg-primary-500',
                 'bg-teal-500', 
                 'bg-yellow-500', 
                 'bg-green-500', 
