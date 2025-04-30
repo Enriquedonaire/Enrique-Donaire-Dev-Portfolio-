@@ -40,7 +40,7 @@ const Contact = () => {
       className="bg-gray-50/15 dark:bg-gray-900/50"
     >
       <video 
-        src="/fondoContact.mp4" 
+        src="fondo-contact.mp4" 
         autoPlay 
         loop 
         muted 

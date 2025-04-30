@@ -56,7 +56,7 @@ const Hero = () => {
       <ParticleBackground />
       {/* GIF decorativo en el lado derecho detrás del texto */}
       <img 
-        src="/art-glow.gif" 
+        src="art-glow.gif" 
         alt="Art Glow" 
         className="absolute right-[4vw] top-[-4vw] w-[60vw] max-w-[700px] min-w-[320px] h-auto opacity-100 pointer-events-none select-none z-0"
         style={{mixBlendMode:'screen'}}
@@ -70,22 +70,41 @@ const Hero = () => {
         >
           {/* Profile Picture */}
           <motion.div 
-            className="relative w-80 h-80 md:w-[26rem] md:h-[26rem] -mt-16"
+            className="relative w-80 h-80 md:w-[26rem] md:h-[26rem] -mt-16 group"
             variants={itemVariants}
           >
             <div className="relative w-full h-full group">
-              {/* Glowing background effect */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-500/50 to-secondary-500/50 blur-2xl opacity-100 transition-opacity duration-700 -z-10"></div>
+              {/* Glowing background effect solo aparece en hover */}
+              <motion.div
+                className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-500/70 to-secondary-500/80 blur-[80px] -z-10 pointer-events-none transition-all duration-500"
+                initial={{ opacity: 0, scale: 1 }}
+                animate={{ opacity: 0, scale: 1 }}
+                whileHover={{
+                  opacity: 1,
+                  scale: 2.1,
+                  filter: 'brightness(2.2) saturate(1.7) blur(160px)',
+                  boxShadow: '0 0 200px 120px #36aef8, 0 0 320px 200px #8c4fff'
+                }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 80,
+                  damping: 14,
+                  duration: 0.5
+                }}
+              />
               {/* Border gradient */}
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full blur opacity-75"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full blur opacity-75 pointer-events-none"></div>
               {/* Image container */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20 dark:border-black/20">
+              <motion.div
+                className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20 dark:border-black/20 z-10"
+                whileHover="hover"
+              >
                 <img 
-                  src="/enrique-pic.jpeg" 
+                  src="enrique-pic.jpeg" 
                   alt="Enrique Donaire" 
                   className="w-full h-full object-cover"
                 />
-              </div>
+              </motion.div>
             </div>
           </motion.div>
           {/* Text Content */}
