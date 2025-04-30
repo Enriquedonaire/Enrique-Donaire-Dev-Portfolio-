@@ -7,21 +7,10 @@ import Typed from 'typed.js';
 import FlipAvatar from '@components/ui/FlipAvatar';
 import { useTheme } from '@components/providers/ThemeProvider';
 
-function useWindowWidth() {
-  const [width, setWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-  return width;
-}
-
 const Hero = () => {
   const typedEl = useRef<HTMLSpanElement>(null);
   const typedInstance = useRef<Typed | null>(null);
   const [isHovered, setIsHovered] = useState(false);
-  const width = useWindowWidth();
   const { theme } = useTheme();
 
   useEffect(() => {
