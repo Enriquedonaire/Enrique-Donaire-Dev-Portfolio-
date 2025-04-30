@@ -17,7 +17,7 @@ const experiences: ExperienceType[] = [
     company: "Henko-AI",
     period: "February 2024 - Present",
     location: "Remote - Spain",
-    image: import.meta.env.BASE_URL + "henko-ai.jpeg",
+    image: "henko-ai.jpeg",
     description: [
       "Spearheading the development of a Progressive Web App with an emphasis on intuitive interfaces and responsive designs",
       "Successfully migrated legacy platforms to modern frameworks, utilizing ReactJS, Redux, and TailwindCSS",
@@ -33,7 +33,7 @@ const experiences: ExperienceType[] = [
     company: "isEazy LMS",
     period: "March 2023 - February 2024",
     location: "Remote - Spain",
-    image: import.meta.env.BASE_URL + "iseazy-lms.jpeg",
+    image: "iseazy-lms.jpeg",
     description: [
       "Directed the evolution and optimization of a Progressive Web Application (PWA), prioritizing mobile-first design and scalability",
       "Drove success across 14 Agile-Scrum sprints, ensuring the seamless delivery of features through active participation in sprint planning, stand-ups, and presentations",
@@ -48,7 +48,7 @@ const experiences: ExperienceType[] = [
     company: "atSistemas",
     period: "March 2022 - January 2023",
     location: "Remote - Spain",
-    image: import.meta.env.BASE_URL + "atSitemas2.jpg",  
+    image: "atSitemas2.jpg",  
     description: [
       "Architected and deployed dynamic web solutions tailored to client specifications, surpassing expectations and boosting operational efficiency",
       "Streamlined development workflows by integrating cutting-edge technologies, driving performance optimization across multiple projects"
@@ -106,9 +106,9 @@ const Experience = () => {
         <SwiperSlide 
           key={experience.id} 
           className="!flex !justify-center !items-center !p-0"
-          style={{ width: '800px', height: '500px' }}
+          style={{ width: '800px', height: '400px' }}
         >
-          <div className="relative w-full h-full rounded-2xl overflow-hidden group m-0">
+          <div className="relative w-full h-full rounded-2xl overflow-hidden group m-0 shadow-2xl shadow-black/30">
             {/* Imagen */}
             <img
               src={experience.image}

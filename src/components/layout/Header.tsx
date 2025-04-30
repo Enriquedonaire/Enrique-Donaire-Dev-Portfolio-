@@ -61,9 +61,44 @@ const Header = () => {
           to="home"
           smooth={true}
           duration={500}
-          className="font-bold text-xl cursor-pointer"
+            className="font-bold text-xl cursor-pointer flex items-center justify-start ml-2 md:ml-6"
         >
-          <span className="animate-gradient-text">ED</span>
+          {scrolled ? (
+            <div className="relative w-16 h-16 rounded-full overflow-hidden bg-white dark:bg-gray-900 shadow-md flex items-center justify-center transition-all duration-300 p-0">
+              {/* Glow animado */}
+              <motion.div
+                className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-500/40 to-secondary-500/40 blur-[22px] -z-10 pointer-events-none"
+                animate={{
+                  opacity: [0.22, 0.32, 0.22],
+                  scale: [1, 1.13, 1],
+                  filter: [
+                    'brightness(1.08) saturate(1.05) blur(22px)',
+                    'brightness(1.18) saturate(1.12) blur(28px)',
+                    'brightness(1.08) saturate(1.05) blur(22px)'
+                  ],
+                  boxShadow: [
+                    '0 0 12px 6px #36aef8, 0 0 18px 9px #8c4fff',
+                    '0 0 24px 12px #36aef8, 0 0 32px 16px #8c4fff',
+                    '0 0 12px 6px #36aef8, 0 0 18px 9px #8c4fff'
+                  ]
+                }}
+                transition={{
+                  duration: 2.2,
+                  repeat: Infinity,
+                  repeatType: 'reverse',
+                  ease: 'easeInOut'
+                }}
+              />
+              <img
+                src={import.meta.env.BASE_URL + 'planet-gif.gif'}
+                alt="Planet Gif"
+                className="w-full h-full object-cover rounded-full z-10"
+                style={{objectFit:'cover'}}
+              />
+            </div>
+          ) : (
+            <span className="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent tracking-tight select-none" style={{fontFamily: 'Raleway, Arial, sans-serif', letterSpacing: '-0.04em'}}>Portfolio</span>
+          )}
         </Link>
 
         {/* Desktop Navigation */}

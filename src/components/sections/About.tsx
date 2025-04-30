@@ -1,7 +1,7 @@
 import Section from '@components/common/Section';
 import { MoveRight } from 'lucide-react';
 import { Link } from 'react-scroll';
-import EarthCanvas from "@/components/canvas/Earth.js";
+import EarthCanvas from '@components/canvas/Earth';
 
 const About = () => {
 

@@ -9,7 +9,7 @@ import FlipAvatar from '@components/ui/FlipAvatar';
 const Hero = () => {
   const typedEl = useRef<HTMLSpanElement>(null);
   const typedInstance = useRef<Typed | null>(null);
-  const [isHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     if (typedEl.current) {
@@ -75,23 +75,25 @@ const Hero = () => {
           <motion.div 
             className="relative w-80 h-80 md:w-[26rem] md:h-[26rem] -mt-16 group"
             variants={itemVariants}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
             <div className="relative w-full h-full group">
-              {/* Glow sutil */}
+              {/* Glow menos dramático */}
               <motion.div
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-500/40 to-secondary-500/40 blur-[32px] -z-10 pointer-events-none transition-all duration-500"
+                className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-500/40 to-secondary-500/40 blur-[32px] -z-10 pointer-events-none transition-all duration-300"
                 animate={isHovered ? {
-                  opacity: 0.35,
-                  scale: 1.25,
-                  filter: 'brightness(1.2) saturate(1.1) blur(48px)',
-                  boxShadow: '0 0 32px 16px #36aef8, 0 0 48px 24px #8c4fff'
+                  opacity: 0.32,
+                  scale: 1.18,
+                  filter: 'brightness(1.15) saturate(1.08) blur(36px)',
+                  boxShadow: '0 0 24px 10px #36aef8, 0 0 32px 16px #8c4fff'
                 } : {
-                  opacity: 0.18,
+                  opacity: 0.14,
                   scale: 1,
-                  filter: 'brightness(1.05) saturate(1.05) blur(32px)',
-                  boxShadow: '0 0 16px 8px #36aef8, 0 0 24px 12px #8c4fff'
+                  filter: 'brightness(1.03) saturate(1.03) blur(24px)',
+                  boxShadow: '0 0 8px 4px #36aef8, 0 0 12px 6px #8c4fff'
                 }}
-                transition={{ duration: 0.5, ease: 'easeInOut' }}
+                transition={{ duration: 0.22, ease: 'easeInOut' }}
               />
               {/* Border gradient */}
               <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full blur opacity-75 pointer-events-none"></div>
