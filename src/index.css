@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --scrollbar-track: #f1f1f1;
+  --scrollbar-thumb: #888;
+  --scrollbar-thumb-hover: #555;
+}
+
+.dark {
+  --scrollbar-track: #2d2d2d;
+  --scrollbar-thumb: #444;
+  --scrollbar-thumb-hover: #666;
+}
+
+/* Gradient text animation */
+.animate-gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-500 via-secondary-500 to-primary-500 bg-[length:200%_auto] animate-gradient-x;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Fade-in animation for page elements */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Style for timeline connector line */
+.timeline-connector {
+  @apply absolute top-0 left-5 h-full w-0.5 bg-gradient-to-b from-primary-400 to-secondary-400 dark:from-primary-500 dark:to-secondary-500;
+}
+
+/* Particle container styles */
+.particles-container {
+  @apply fixed top-0 left-0 w-full h-full -z-10;
+}
+
+/* Typing cursor animation */
+.typing::after {
+  content: '|';
+  animation: cursor 1s step-start infinite;
+}
+
+@keyframes cursor {
+  50% { opacity: 0; }
+}
