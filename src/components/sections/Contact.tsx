@@ -2,6 +2,11 @@ import { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Section from '@components/common/Section';
 import { Check, AlertCircle, Send, Phone, Mail, MapPin } from 'lucide-react';
+import emailjs from 'emailjs-com';
+
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -17,19 +22,30 @@ const Contact = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus('loading');
-    setTimeout(() => {
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        PUBLIC_KEY
+      );
       setFormStatus('success');
       if (formRef.current) {
         formRef.current.reset();
         setFormData({ name: '', email: '', message: '' });
       }
-      setTimeout(() => {
-        setFormStatus('idle');
-      }, 5000);
-    }, 1500);
+      setTimeout(() => setFormStatus('idle'), 5000);
+    } catch {
+      setFormStatus('error');
+      setTimeout(() => setFormStatus('idle'), 5000);
+    }
   };
 
   return (
@@ -47,12 +63,9 @@ const Contact = () => {
         className="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-20"
       />
       <div className="relative z-10 max-w-5xl mx-auto group">
-        {/* Glow effect on hover, only behind the container */}
         <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-500/60 via-transparent to-secondary-500/60 blur-3xl opacity-0 group-hover:opacity-80 transition-opacity duration-700"></div>
         <div className="rounded-2xl bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-8 md:p-14 shadow-xl">
-          {/* Título y subtítulo */}
           <h2 className="text-4xl font-extrabold mb-2 text-center text-gray-900 dark:text-white">Get In Touch</h2>
-          
           <p className="text-lg mb-10 text-center text-gray-700 dark:text-gray-300">
             Ready to collaborate? Let's make something amazing together!
           </p>
@@ -109,7 +122,6 @@ const Contact = () => {
               <div className="mt-10">
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Connect with me</h4>
                 <div className="flex space-x-4">
-                  {/* ...iconos sociales... */}
                   <a 
                     href="https://github.com/Enriquedonaire" 
                     target="_blank"
@@ -226,7 +238,6 @@ const Contact = () => {
                     </span>
                   )}
                 </motion.button>
-                {/* Form status message */}
                 <AnimatePresence>
                   {formStatus === 'success' && (
                     <motion.div
