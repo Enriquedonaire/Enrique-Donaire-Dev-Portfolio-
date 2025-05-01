@@ -60,6 +60,9 @@ const Contact = () => {
         autoPlay 
         loop 
         muted 
+        controls={false}
+        playsInline
+        preload="auto"
         className="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-20"
       />
       <div className="relative z-10 max-w-5xl mx-auto group">
