@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import Section from '@components/common/Section';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, EffectCube, Pagination } from 'swiper/modules';
+import { EffectCoverflow, EffectCube, Pagination, Autoplay } from 'swiper/modules';
 import { Experience as ExperienceType } from '@/types';
 import { Calendar, MapPin } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -98,6 +98,8 @@ const Experience = () => {
           key={isMobileOrTablet ? 'cube' : 'coverflow'}
           effect={isMobileOrTablet ? 'cube' : 'coverflow'}
           grabCursor={true}
+          {...(isMobileOrTablet ? { autoplay: { delay: 2000, disableOnInteraction: true } } : {})}
+          centeredSlides={!isMobileOrTablet}
           cubeEffect={
             isMobileOrTablet
               ? {
@@ -121,7 +123,7 @@ const Experience = () => {
           slidesPerView={isMobileOrTablet ? 1 : 3}
           initialSlide={1}
           pagination={true}
-          modules={isMobileOrTablet ? [EffectCube, Pagination] : [EffectCoverflow, Pagination]}
+          modules={isMobileOrTablet ? [EffectCube, Pagination, Autoplay] : [EffectCoverflow, Pagination]}
           className="py-1 w-full max-w-screen-2xl"
         >
           {experiences.map((experience) => (
