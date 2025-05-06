@@ -18,7 +18,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
-  
+
   const toggleMenu = () => setIsOpen(!isOpen);
 
   useEffect(() => {
@@ -42,26 +42,25 @@ const Header = () => {
     } else {
       document.body.style.overflow = 'unset';
     }
-    
+
     return () => {
       document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
 
   return (
-    <header 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-white/80 dark:bg-dark/80 backdrop-blur-md py-3 shadow-md' 
-          : 'bg-transparent py-5'
-      }`}
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
+        ? 'bg-white/80 dark:bg-dark/80 backdrop-blur-md py-3 shadow-md'
+        : 'bg-transparent py-5'
+        }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         <Link
           to="home"
           smooth={true}
           duration={500}
-            className="font-bold text-xl cursor-pointer flex items-center justify-start ml-2 md:ml-6"
+          className="font-bold text-xl cursor-pointer flex items-center justify-start ml-2 md:ml-6"
         >
           {scrolled ? (
             <div className="relative w-16 h-16 rounded-full overflow-hidden bg-white dark:bg-gray-900 shadow-md flex items-center justify-center transition-all duration-300 p-0">
@@ -93,11 +92,11 @@ const Header = () => {
                 src={import.meta.env.BASE_URL + 'planet-gif.gif'}
                 alt="Planet Gif"
                 className="w-full h-full object-cover rounded-full z-10"
-                style={{objectFit:'cover'}}
+                style={{ objectFit: 'cover' }}
               />
             </div>
           ) : (
-            <span className="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent tracking-tight select-none" style={{fontFamily: 'Raleway, Arial, sans-serif', letterSpacing: '-0.04em'}}>Portfolio</span>
+            <span className="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent tracking-tight select-none" style={{ fontFamily: 'Raleway, Arial, sans-serif', letterSpacing: '-0.04em' }}>Portfolio</span>
           )}
         </Link>
 
@@ -119,41 +118,32 @@ const Header = () => {
           ))}
 
           <div className="flex items-center space-x-4">
-            <a 
-              href="https://github.com/Enriquedonaire" 
-              target="_blank" 
+            <a
+              href="https://github.com/Enriquedonaire"
+              target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Profile"
               className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
             >
               <Github size={20} />
             </a>
-            <a 
-              href="https://linkedin.com/in/enrique-donaire" 
-              target="_blank" 
+            <a
+              href="https://linkedin.com/in/enrique-donaire"
+              target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn Profile"
               className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
             >
               <Linkedin size={20} />
             </a>
-            <a 
-              href="mailto:donaire.q2@gmail.com" 
+            <a
+              href="mailto:donaire.q2@gmail.com"
               aria-label="Email"
               className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
             >
               <Mail size={20} />
             </a>
-            <a
-              href={import.meta.env.BASE_URL + 'Enrique-Donaire-full-Stack-Dev-2025.pdf'}
-              download
-              aria-label="Descargar CV"
-              className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
-            >
-              <Download size={20} />
-            </a>
           </div>
-          
           <button
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
@@ -172,7 +162,7 @@ const Header = () => {
           >
             {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
           </button>
-          
+
           <button
             onClick={toggleMenu}
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
@@ -212,38 +202,30 @@ const Header = () => {
                 </nav>
 
                 <div className="mt-auto flex justify-center space-x-8 py-6">
-                  <a 
-                    href="https://github.com/Enriquedonaire" 
-                    target="_blank" 
+                  <a
+                    href="https://github.com/Enriquedonaire"
+                    target="_blank"
                     rel="noopener noreferrer"
                     aria-label="GitHub Profile"
                     className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
                   >
                     <Github size={24} />
                   </a>
-                  <a 
-                    href="https://linkedin.com/in/enrique-donaire" 
-                    target="_blank" 
+                  <a
+                    href="https://linkedin.com/in/enrique-donaire"
+                    target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn Profile"
                     className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
                   >
                     <Linkedin size={24} />
                   </a>
-                  <a 
-                    href="mailto:donaire.q2@gmail.com" 
+                  <a
+                    href="mailto:donaire.q2@gmail.com"
                     aria-label="Email"
                     className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
                   >
                     <Mail size={24} />
-                  </a>
-                  <a
-                    href={import.meta.env.BASE_URL + 'Enrique-Donaire-Full-Stack-Dev-2025.pdf'}
-                    download
-                    aria-label="Descargar CV"
-                    className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
-                  >
-                    <Download size={24} />
                   </a>
                 </div>
               </div>
