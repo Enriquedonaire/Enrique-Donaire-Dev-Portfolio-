@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-scroll';
-import { Menu, X, Moon, Sun, Github, Linkedin, Mail, Download } from 'lucide-react';
+import { Menu, X, Moon, Sun, Github, Linkedin, Mail } from 'lucide-react';
 import { useTheme } from '@components/providers/ThemeProvider';
 import { NavItem } from '@/types';
 
