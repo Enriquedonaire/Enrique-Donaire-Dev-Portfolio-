@@ -145,7 +145,7 @@ const Header = () => {
               <Mail size={20} />
             </a>
             <a
-              href={import.meta.env.BASE_URL + 'Enrique-Donaire-Full-Stack-Web-Dev-2025.pdf'}
+              href={import.meta.env.BASE_URL + 'Enrique-Donaire-full-Stack-Dev-2025.pdf'}
               download
               aria-label="Descargar CV"
               className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
@@ -238,7 +238,7 @@ const Header = () => {
                     <Mail size={24} />
                   </a>
                   <a
-                    href={import.meta.env.BASE_URL + 'Enrique-Donaire-Full-Stack-Web-Dev-2025.pdf'}
+                    href={import.meta.env.BASE_URL + 'Enrique-Donaire-Full-Stack-Dev-2025.pdf'}
                     download
                     aria-label="Descargar CV"
                     className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
