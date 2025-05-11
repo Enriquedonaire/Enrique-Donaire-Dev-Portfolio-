@@ -5,6 +5,7 @@ import { Link } from 'react-scroll';
 import ParticleBackground from '@components/common/ParticleBackground';
 import Typed from 'typed.js';
 import FlipAvatar from '@components/ui/FlipAvatar';
+import { FloatingPaper } from '@components/common/floating-papers';
 
 const Hero = () => {
   const typedEl = useRef<HTMLSpanElement>(null);
@@ -55,6 +56,11 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center">
+      {/* Floating papers background */}
+      <div className="absolute inset-0 overflow-hidden z-0">
+        <FloatingPaper count={6} />
+      </div>
+
       <ParticleBackground />
 
       <img
@@ -98,7 +104,7 @@ const Hero = () => {
               {/* FlipAvatar */}
               <FlipAvatar
                 front={import.meta.env.BASE_URL + 'enrique-pic.jpeg'}
-                back={import.meta.env.BASE_URL + 'avatar-ghibli.png'}
+                back={import.meta.env.BASE_URL + 'avatar-ghibli.jpg'}
                 altFront="Enrique Donaire"
                 altBack="Enrique Donaire Ghibli"
               />

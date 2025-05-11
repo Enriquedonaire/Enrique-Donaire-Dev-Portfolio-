@@ -1,20 +1,15 @@
 import { motion } from 'framer-motion';
-import Section from '@components/common/Section';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, EffectCube, Pagination, Autoplay } from 'swiper/modules';
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Briefcase, Calendar } from "lucide-react";
 import { Experience as ExperienceType } from '@/types';
-import { Calendar, MapPin } from 'lucide-react';
-import { useEffect, useState } from 'react';
-
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/effect-cube';
-import 'swiper/css/pagination';
+import ExperienceCanvas from "@/components/canvas/ExperienceCanvas";
+import ParticleBackground from "@/components/common/ParticleBackground";
 
 const experiences: ExperienceType[] = [
   {
     id: 1,
-    title: "Front-End Developer & Web Designer",
+    title: "Front-End Developer",
     company: "Henko-AI",
     period: "February 2024 - Present",
     location: "Remote - Spain",
@@ -49,7 +44,7 @@ const experiences: ExperienceType[] = [
     company: "atSistemas",
     period: "March 2022 - January 2023",
     location: "Remote - Spain",
-    image: "atSitemas2.jpg",  
+    image: "atSitemas2.jpg",
     description: [
       "Architected and deployed dynamic web solutions tailored to client specifications, surpassing expectations and boosting operational efficiency",
       "Streamlined development workflows by integrating cutting-edge technologies, driving performance optimization across multiple projects"
@@ -71,106 +66,127 @@ const experiences: ExperienceType[] = [
   }
 ];
 
-const Experience = () => {
-  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
-  useEffect(() => {
-    const check = () => setIsMobileOrTablet(window.innerWidth < 1024);
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
+const ExperienceCard = ({ exp }: { exp: ExperienceType }) => (
+  <Card
+    className="relative overflow-hidden transition-all duration-300 w-full max-w-[540px] min-h-[420px] group
+      dark:bg-gradient-to-br dark:from-[#181c2a]/95 dark:to-[#232946]/95 dark:border-none
+      bg-white/95 border border-gray-200
+      backdrop-blur-sm
+      z-10
+    "
+  >
+    {/* Enhanced glow effect */}
+    <div
+      className="absolute inset-0 -z-10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      style={{
+        background: 'radial-gradient(circle at center, rgba(124, 58, 237, 0.15), rgba(6, 182, 212, 0.15))',
+        filter: 'blur(20px)',
+        transform: 'scale(1.2)',
+      }}
+    />
 
+    {/* Animated border gradient */}
+    <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-purple-400 via-cyan-400 to-purple-400 dark:from-purple-500 dark:via-cyan-500 dark:to-purple-500 bg-[length:100%_200%] animate-gradient-y"></div>
+
+    <CardHeader>
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+        <div>
+          <CardTitle className="text-xl md:text-2xl font-bold text-blue-900 dark:text-white mb-1">
+            {exp.title}
+          </CardTitle>
+          <div className="flex items-center mt-2 text-purple-600 dark:text-purple-400">
+            <Briefcase className="h-4 w-4 mr-2" />
+            <span>{exp.company}</span>
+          </div>
+        </div>
+        <div className="flex items-center text-cyan-700 dark:text-cyan-400">
+          <Calendar className="h-4 w-4 mr-2" />
+          <span>{exp.period}</span>
+          <span className="mx-2">•</span>
+          <span>{exp.location}</span>
+        </div>
+      </div>
+    </CardHeader>
+    <CardContent>
+      <ul className="space-y-2 mb-4">
+        {exp.description.map((item, i) => (
+          <li key={i} className="text-gray-800 dark:text-gray-300 flex">
+            <span className="text-purple-600 dark:text-purple-500 mr-2">•</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <div className="flex flex-wrap gap-2 mt-4">
+        {exp.skills.map((skill, i) => (
+          <Badge
+            key={i}
+            variant="outline"
+            className={`${i % 2 === 0 ? "bg-purple-500/10 text-purple-700 dark:text-purple-300 border-purple-500/30" : "bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border-cyan-500/30"}`}
+          >
+            {skill}
+          </Badge>
+        ))}
+      </div>
+    </CardContent>
+  </Card>
+);
+
+const Experience = () => {
   return (
-    <Section
-      id="experience"
-      title="Experience"
-      subtitle="A detailed breakdown of my professional journey"
-      className="bg-gray-50/15 dark:bg-gray-900/50"
-    >
-      <motion.div 
-        className="w-full max-w-screen-6xl mx-auto px-4 md:px-8 rounded-2xl" 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <Swiper
-          key={isMobileOrTablet ? 'cube' : 'coverflow'}
-          effect={isMobileOrTablet ? 'cube' : 'coverflow'}
-          grabCursor={true}
-          {...(isMobileOrTablet ? { autoplay: { delay: 2000, disableOnInteraction: true } } : {})}
-          centeredSlides={!isMobileOrTablet}
-          cubeEffect={
-            isMobileOrTablet
-              ? {
-                  shadow: true,
-                  slideShadows: true,
-                  shadowOffset: 20,
-                  shadowScale: 0.94,
-                }
-              : undefined
-          }
-          coverflowEffect={
-            !isMobileOrTablet
-              ? {
-                  rotate: 50,
-                  stretch: 0,
-                  depth: 100,
-                  modifier: 1,
-                }
-              : undefined
-          }
-          slidesPerView={isMobileOrTablet ? 1 : 3}
-          initialSlide={1}
-          pagination={true}
-          modules={isMobileOrTablet ? [EffectCube, Pagination, Autoplay] : [EffectCoverflow, Pagination]}
-          className="py-1 w-full max-w-screen-2xl"
+    <section id="experience" className="relative py-20 px-4 overflow-visible">
+      <ParticleBackground />
+      <div className="container mx-auto relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
         >
-          {experiences.map((experience) => (
-            <SwiperSlide 
-              key={experience.id} 
-              className="!flex !justify-center !items-center !p-0"
-              style={{ width: '800px', height: '400px' }}
-            >
-              <div className="relative w-full h-full rounded-2xl overflow-hidden group m-0 shadow-xl">
-                {/* Imagen */}
-                <img
-                  src={experience.image}
-                  alt={experience.company}
-                  className="absolute inset-0 w-full h-full object-cover rounded-2xl z-0"
-                />
-                {/* Overlay gradiente animado - cubre todo el slide sin márgenes */}
-                <div className="absolute inset-0 w-full h-full rounded-2xl pointer-events-none before:content-[''] before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-r before:from-[#AA367C] before:to-[#4A2FBD] before:opacity-85 before:transition-all before:duration-400 before:ease-in-out before:h-0 group-hover:before:h-full before:w-full before:z-10"></div>
-                {/* Texto sobre la imagen, ocupa todo el slide */}
-                <div className="absolute inset-0 flex flex-col justify-center items-center w-full h-full text-center opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out z-20 p-8">
-                  <h3 className="text-3xl font-bold text-white mb-2 drop-shadow-lg">{experience.title}</h3>
-                  <span className="italic font-normal text-lg text-white mb-2 drop-shadow">{experience.company}</span>
-                  <div className="flex items-center justify-center text-white text-sm mb-2 gap-4">
-                    <span className="flex items-center"><Calendar size={16} className="mr-1" />{experience.period}</span>
-                    <span className="flex items-center"><MapPin size={16} className="mr-1" />{experience.location}</span>
-                  </div>
-                  <ul className="text-white text-base mb-4 list-disc pl-5 text-left max-h-40 overflow-y-auto mx-auto w-full max-w-2xl">
-                    {experience.description.map((item, idx) => (
-                      <li key={idx}>{item}</li>
-                    ))}
-                  </ul>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {experience.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="px-3 py-1 text-xs bg-white/30 rounded-full text-white border border-white/40"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </motion.div>
-    </Section>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            My{' '}
+            <span className="bg-gradient-to-r from-purple-500 to-cyan-500 text-transparent bg-clip-text">
+              Experience
+            </span>
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto mb-8"></div>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            My professional journey in web and full-stack application development.
+          </p>
+        </motion.div>
+        <div className="relative flex flex-col items-center justify-center min-h-[1000px]">
+          <div className="absolute inset-0 flex items-center justify-center select-none">
+            <ExperienceCanvas />
+          </div>
+          <div className="grid grid-cols-2 grid-rows-2 gap-x-[23vw] gap-y-40 w-full max-w-[2000px] relative z-10 pt-20 pb-20 px-4">
+            <div className="flex justify-end items-end">
+              <motion.div whileHover={{ scale: 1.07 }} className="w-full max-w-[540px] min-h-[420px] transition-all duration-300 group">
+                <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl z-0" style={{ boxShadow: '0 0 60px 20px #7c3aed88, 0 0 120px 40px #06b6d488' }}></div>
+                {experiences[0] && <ExperienceCard exp={experiences[0]} />}
+              </motion.div>
+            </div>
+            <div className="flex justify-start items-end">
+              <motion.div whileHover={{ scale: 1.07 }} className="w-full max-w-[540px] min-h-[420px] transition-all duration-300 group">
+                <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl z-0" style={{ boxShadow: '0 0 60px 20px #7c3aed88, 0 0 120px 40px #06b6d488' }}></div>
+                {experiences[1] && <ExperienceCard exp={experiences[1]} />}
+              </motion.div>
+            </div>
+            <div className="flex justify-end items-start">
+              <motion.div whileHover={{ scale: 1.07 }} className="w-full max-w-[540px] min-h-[420px] transition-all duration-300 group">
+                <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl z-0" style={{ boxShadow: '0 0 60px 20px #7c3aed88, 0 0 120px 40px #06b6d488' }}></div>
+                {experiences[2] && <ExperienceCard exp={experiences[2]} />}
+              </motion.div>
+            </div>
+            <div className="flex justify-start items-start">
+              <motion.div whileHover={{ scale: 1.07 }} className="w-full max-w-[540px] min-h-[420px] transition-all duration-300 group">
+                <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl z-0" style={{ boxShadow: '0 0 60px 20px #7c3aed88, 0 0 120px 40px #06b6d488' }}></div>
+                {experiences[3] && <ExperienceCard exp={experiences[3]} />}
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

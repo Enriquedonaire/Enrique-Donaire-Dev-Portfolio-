@@ -12,7 +12,7 @@ const ParticleBackground = () => {
   }, []);
 
   return (
-    <div className="particles-container">
+    <div className="particles-container fixed inset-0 w-full h-full pointer-events-none z-0">
       <Particles
         id="tsparticles"
         init={particlesInit}
