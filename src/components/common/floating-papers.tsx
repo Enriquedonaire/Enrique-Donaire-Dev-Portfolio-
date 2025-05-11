@@ -93,7 +93,7 @@ export function FloatingPaper({ count = 15 }) {
                 style={{
                   boxShadow: document.documentElement.classList.contains('dark')
                     ? '0 8px 32px 0 #525354, 0 2px 16px 0 #646d74'
-                    : '0 8px 32px 0 rgba(0,0,0,0.32), 0 2px 16px 0 rgba(0,0,0,0.19  )',
+                    : '0 8px 32px 0 rgba(116, 115, 115, 0.32), 0 2px 16px 0 rgba(0,0,0,0.25  )',
                 }}
               >
                 {getIcon(i)}
