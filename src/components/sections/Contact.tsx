@@ -53,7 +53,6 @@ const Contact = () => {
       id="contact"
       title=""
       subtitle=""
-      className="bg-gray-50/15 dark:bg-gray-900/50"
     >
       <video 
         src={import.meta.env.BASE_URL + "fondo-contact.mp4"} 
@@ -63,7 +62,7 @@ const Contact = () => {
         controls={false}
         playsInline
         preload="auto"
-        className="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-20"
+        className="absolute top-0 left-0 w-full h-full object-contain z-0 opacity-20"
       />
       <div className="relative z-10 max-w-5xl mx-auto group">
         <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-500/60 via-transparent to-secondary-500/60 blur-3xl opacity-0 group-hover:opacity-80 transition-opacity duration-700"></div>

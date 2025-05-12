@@ -195,7 +195,7 @@ const Projects = () => {
           {filteredProjects.map((project, index) => (
             <SwiperSlide
               key={project.id}
-              className={`rounded-2xl overflow-visible relative transition-transform duration-300
+              className={`rounded-2xl overflow-visible relative transition-transform duration-300 mt-6
                 ${[
                   'bg-primary-500/90',
                   'bg-teal-500/90',
@@ -233,7 +233,7 @@ const Projects = () => {
                   opacity: 0.85,
                   background:
                     document.documentElement.classList.contains('dark')
-                      ? '#0343639e'
+                      ? '#2c2f309e'
                       : 'rgba(124, 124, 124, 0.25)',
                 }}
               />
@@ -280,7 +280,7 @@ const Projects = () => {
 
       </motion.div>
 
-      <div className="text-center mt-20">
+      <div className="text-center mt-24">
         <a
           href="https://github.com/Enriquedonaire"
           target="_blank"

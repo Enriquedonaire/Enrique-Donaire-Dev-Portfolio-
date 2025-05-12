@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Briefcase, Calendar } from "lucide-react";
@@ -66,70 +67,89 @@ const experiences: ExperienceType[] = [
   }
 ];
 
-const ExperienceCard = ({ exp }: { exp: ExperienceType }) => (
-  <Card
-    className="relative overflow-hidden transition-all duration-300 w-full max-w-[540px] min-h-[420px] group
-      dark:bg-gradient-to-br dark:from-[#181c2a]/95 dark:to-[#232946]/95 dark:border-none
-      bg-white/95 border border-gray-200
-      backdrop-blur-sm
-      z-10
-    "
-  >
-    {/* Enhanced glow effect */}
-    <div
-      className="absolute inset-0 -z-10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-      style={{
-        background: 'radial-gradient(circle at center, rgba(124, 58, 237, 0.15), rgba(6, 182, 212, 0.15))',
-        filter: 'blur(20px)',
-        transform: 'scale(1.2)',
-      }}
-    />
+const ExperienceCard = ({ exp }: { exp: ExperienceType }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  return (
+    <Card
+      className="relative overflow-hidden transition-all duration-300 w-full max-w-[540px] min-h-[420px] group
+        dark:bg-gradient-to-br dark:from-[#181c2a]/95 dark:to-[#0a0a0a]/95 dark:border-none
+        bg-white/95 border border-gray-200
+        backdrop-blur-sm
+        z-10
+      "
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Enhanced glow effect */}
+      <div
+        className="absolute inset-0 -z-10 rounded-2xl transition-opacity duration-300"
+        style={{
+          background: 'radial-gradient(circle at center, rgba(124, 58, 237, 0.15), rgba(6, 182, 212, 0.15))',
+          filter: 'blur(20px)',
+          transform: 'scale(1.2)',
+          opacity: isHovered ? 1 : 0,
+        }}
+      />
 
-    {/* Animated border gradient */}
-    <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-purple-400 via-cyan-400 to-purple-400 dark:from-purple-500 dark:via-cyan-500 dark:to-purple-500 bg-[length:100%_200%] animate-gradient-y"></div>
+      {/* Animated border gradient */}
+      <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-purple-400 via-cyan-400 to-purple-400 dark:from-purple-500 dark:via-cyan-500 dark:to-purple-500 bg-[length:100%_200%] animate-gradient-y"></div>
 
-    <CardHeader>
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
-        <div>
-          <CardTitle className="text-xl md:text-2xl font-bold text-blue-900 dark:text-white mb-1">
-            {exp.title}
-          </CardTitle>
-          <div className="flex items-center mt-2 text-purple-600 dark:text-purple-400">
-            <Briefcase className="h-4 w-4 mr-2" />
-            <span>{exp.company}</span>
+      <CardHeader>
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+          <div>
+            <CardTitle className="text-xl md:text-2xl font-bold text-blue-900 dark:text-white mb-1">
+              {exp.title}
+            </CardTitle>
+            <div className="flex items-center mt-2 text-purple-600 dark:text-purple-400">
+              <Briefcase className="h-4 w-4 mr-2" />
+              <span>{exp.company}</span>
+            </div>
+          </div>
+          <div className="flex items-center text-cyan-700 dark:text-cyan-400">
+            <Calendar className="h-4 w-4 mr-2" />
+            <span>{exp.period}</span>
+            <span className="mx-2">•</span>
+            <span>{exp.location}</span>
           </div>
         </div>
-        <div className="flex items-center text-cyan-700 dark:text-cyan-400">
-          <Calendar className="h-4 w-4 mr-2" />
-          <span>{exp.period}</span>
-          <span className="mx-2">•</span>
-          <span>{exp.location}</span>
+      </CardHeader>
+      <CardContent>
+        <ul className="space-y-2 mb-4">
+          {exp.description.map((item, i) => (
+            <li key={i} className="text-gray-800 dark:text-gray-300 flex">
+              <span className="text-purple-600 dark:text-purple-500 mr-2">•</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="flex flex-wrap gap-2 mt-4">
+          {exp.skills.map((skill, i) => (
+            <Badge
+              key={i}
+              variant="outline"
+              className={`${i % 2 === 0 ? "bg-purple-500/10 text-purple-700 dark:text-purple-300 border-purple-500/30" : "bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border-cyan-500/30"}`}
+            >
+              {skill}
+            </Badge>
+          ))}
         </div>
-      </div>
-    </CardHeader>
-    <CardContent>
-      <ul className="space-y-2 mb-4">
-        {exp.description.map((item, i) => (
-          <li key={i} className="text-gray-800 dark:text-gray-300 flex">
-            <span className="text-purple-600 dark:text-purple-500 mr-2">•</span>
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-      <div className="flex flex-wrap gap-2 mt-4">
-        {exp.skills.map((skill, i) => (
-          <Badge
-            key={i}
-            variant="outline"
-            className={`${i % 2 === 0 ? "bg-purple-500/10 text-purple-700 dark:text-purple-300 border-purple-500/30" : "bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border-cyan-500/30"}`}
-          >
-            {skill}
-          </Badge>
-        ))}
-      </div>
-    </CardContent>
-  </Card>
-);
+        {/* Botón de enlace a la compañía */}
+        {exp.company === "Henko-AI" && (
+          <a href="https://henko-ai.com" target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-4 py-2 bg-cyan-700 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors">Learn more</a>
+        )}
+        {exp.company === "isEazy LMS" && (
+          <a href="https://www.iseazy.com/es/lms" target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-4 py-2 bg-cyan-700 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors">Learn more</a>
+        )}
+        {exp.company === "atSistemas" && (
+          <a href="https://www.knowmadmood.com/es" target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-4 py-2 bg-cyan-700 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors">Learn more</a>
+        )}
+        {exp.company === "Freelance" && (
+          <a href="https://github.com/Enriquedonaire" target="_blank" rel="noopener noreferrer" className="inline-block mt-20 px-4 py-2 bg-cyan-700 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors ">Learn more</a>
+        )}
+      </CardContent>
+    </Card>
+  );
+};
 
 const Experience = () => {
   return (
@@ -155,31 +175,27 @@ const Experience = () => {
           </p>
         </motion.div>
         <div className="relative flex flex-col items-center justify-center min-h-[1000px]">
-          <div className="absolute inset-0 flex items-center justify-center select-none">
+          <div className="absolute inset-0 flex items-center justify-center z-0">
             <ExperienceCanvas />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-x-0 md:gap-x-[23vw] gap-y-12 md:gap-y-40 w-full max-w-[2000px] relative z-10 pt-10 md:pt-20 pb-10 md:pb-20 px-0 md:px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-x-0 md:gap-x-[23vw] gap-y-12 md:gap-y-40 w-full max-w-[2000px] relative z-10 pt-10 md:pt-20 pb-10 md:pb-20 px-0 md:px-4 pointer-events-none">
             <div className="flex justify-end items-end">
-              <motion.div whileHover={{ scale: 1.07 }} className="w-full max-w-[540px] min-h-[420px] transition-all duration-300 group">
-                <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl z-0" style={{ boxShadow: '0 0 60px 20px #7c3aed88, 0 0 120px 40px #06b6d488' }}></div>
+              <motion.div whileHover={{ scale: 1.09 }} className="w-full max-w-[540px] min-h-[420px] transition-all duration-300 pointer-events-auto">
                 {experiences[0] && <ExperienceCard exp={experiences[0]} />}
               </motion.div>
             </div>
             <div className="flex justify-start items-end">
-              <motion.div whileHover={{ scale: 1.07 }} className="w-full max-w-[540px] min-h-[420px] transition-all duration-300 group">
-                <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl z-0" style={{ boxShadow: '0 0 60px 20px #7c3aed88, 0 0 120px 40px #06b6d488' }}></div>
+              <motion.div whileHover={{ scale: 1.07 }} className="w-full max-w-[540px] min-h-[420px] transition-all duration-300 pointer-events-auto">
                 {experiences[1] && <ExperienceCard exp={experiences[1]} />}
               </motion.div>
             </div>
             <div className="flex justify-end items-start">
-              <motion.div whileHover={{ scale: 1.07 }} className="w-full max-w-[540px] min-h-[420px] transition-all duration-300 group">
-                <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl z-0" style={{ boxShadow: '0 0 60px 20px #7c3aed88, 0 0 120px 40px #06b6d488' }}></div>
+              <motion.div whileHover={{ scale: 1.07 }} className="w-full max-w-[540px] min-h-[420px] transition-all duration-300 pointer-events-auto">
                 {experiences[2] && <ExperienceCard exp={experiences[2]} />}
               </motion.div>
             </div>
             <div className="flex justify-start items-start">
-              <motion.div whileHover={{ scale: 1.07 }} className="w-full max-w-[540px] min-h-[420px] transition-all duration-300 group">
-                <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl z-0" style={{ boxShadow: '0 0 60px 20px #7c3aed88, 0 0 120px 40px #06b6d488' }}></div>
+              <motion.div whileHover={{ scale: 1.07 }} className="w-full max-w-[540px] min-h-[420px] transition-all duration-300 pointer-events-auto">
                 {experiences[3] && <ExperienceCard exp={experiences[3]} />}
               </motion.div>
             </div>

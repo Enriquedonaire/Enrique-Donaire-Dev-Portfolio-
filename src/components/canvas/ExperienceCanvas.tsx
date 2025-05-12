@@ -19,22 +19,24 @@ const ExperienceCanvas = () => {
         gl={{ preserveDrawingBuffer: true }}
         camera={{
           fov: 40,
-          near: 0.01,
-          far: 200,
-          position: [0, 5, 8], // Cámara centrada y más alejada
+          near: 0.09,
+          far: 100,
+          position: [1, 5, 8], // Cámara centrada y más alejada
         }}
         style={{ width: '100%', height: '100%' }}
       >
         <Suspense fallback={null}>
           <OrbitControls
             autoRotate
+            autoRotateSpeed={4}
             enableZoom={false}
-            enablePan={false}
+            enablePan={true}
             maxPolarAngle={Math.PI / 1.8}
             minPolarAngle={0}
             enableRotate={true} // Permite rotar el modelo con mouse/touch
+            target={[0, 0.5, 0]}
           />
-          <ExperienceModel scale={1.5} />
+          <ExperienceModel scale={1.75} />
           <Preload all />
         </Suspense>
       </Canvas>

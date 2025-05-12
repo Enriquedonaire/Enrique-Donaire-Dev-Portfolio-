@@ -118,7 +118,7 @@ const SkillsSection = () => {
       id="skills"
       title="Skills"
       subtitle="My technical skills and competencies"
-      className="bg-gray-50/25 dark:bg-gray-900/50 mt-[-75px] py-12 "
+      className="mt-[-75px] py-12 "
     >
       {/* Tech Stack Cloud */}
       <TechStackCloud />
