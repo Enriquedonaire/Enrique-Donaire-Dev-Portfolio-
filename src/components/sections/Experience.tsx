@@ -158,7 +158,7 @@ const Experience = () => {
           <div className="absolute inset-0 flex items-center justify-center select-none">
             <ExperienceCanvas />
           </div>
-          <div className="grid grid-cols-2 grid-rows-2 gap-x-[23vw] gap-y-40 w-full max-w-[2000px] relative z-10 pt-20 pb-20 px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-x-0 md:gap-x-[23vw] gap-y-12 md:gap-y-40 w-full max-w-[2000px] relative z-10 pt-10 md:pt-20 pb-10 md:pb-20 px-0 md:px-4">
             <div className="flex justify-end items-end">
               <motion.div whileHover={{ scale: 1.07 }} className="w-full max-w-[540px] min-h-[420px] transition-all duration-300 group">
                 <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl z-0" style={{ boxShadow: '0 0 60px 20px #7c3aed88, 0 0 120px 40px #06b6d488' }}></div>

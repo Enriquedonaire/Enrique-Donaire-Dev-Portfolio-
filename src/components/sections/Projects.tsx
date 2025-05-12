@@ -170,7 +170,7 @@ const Projects = () => {
           effect="cards"
           grabCursor={true}
           modules={[EffectCards]}
-          className="h-[600px] overflow-visible relative"
+          className="h-[420px] sm:h-[520px] md:h-[420px] lg:h-[600px] overflow-visible relative max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto"
           initialSlide={Math.floor(filteredProjects.length / 2)}
           onSwiper={swiper => {
             swiper.el.style.overflow = 'visible';
@@ -189,11 +189,11 @@ const Projects = () => {
             effect="cards"
             grabCursor={true}
             modules={[EffectCards]}
-            className="h-[600px] overflow-visible relative"
+            className="h-[420px] sm:h-[520px] md:h-[420px] lg:h-[600px] overflow-visible relative max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto"
             initialSlide={filteredProjects.findIndex(p => p.title === "InQbus Marketing")}
             cardsEffect={{
               perSlideRotate: 5,
-              perSlideOffset: 90, // Valor ajustado para una separación moderada
+              perSlideOffset: 32, // Menor separación en mobile y mediano
               slideShadows: false
             }}
             onSwiper={(swiper) => {
@@ -268,7 +268,7 @@ const Projects = () => {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block px-4 py-2 bg-white text-primary-500 rounded-lg hover:bg-gray-100 transition-colors"
+                      className="inline-block px-4 py-2 bg-white text-primary-500 rounded-lg hover:bg-gray-100 transition-colors duration-300"
                     >
                       Live Demo
                     </a>
