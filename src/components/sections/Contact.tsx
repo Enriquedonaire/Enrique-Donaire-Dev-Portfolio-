@@ -165,7 +165,7 @@ const Contact = () => {
                     </svg>
                   </a>
                   <a
-                    href={import.meta.env.BASE_URL + 'Enrique-Donaire-Full-Stack-Dev-2025.pdf'}
+                    href={import.meta.env.BASE_URL + 'Enrique-Donaire-Web-Dev-2025.pdf'}
                     download
                     className="bg-gray-100 dark:bg-gray-800 p-3 rounded-full text-gray-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/30 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                     aria-label="Descargar CV"
