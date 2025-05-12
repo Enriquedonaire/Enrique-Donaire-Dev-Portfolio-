@@ -105,8 +105,8 @@ const Hero = () => {
               <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full blur opacity-75 pointer-events-none"></div>
               {/* FlipAvatar */}
               <FlipAvatar
-                front={import.meta.env.BASE_URL + 'enrique-pic-version2.png'}
-                back={import.meta.env.BASE_URL + 'avatar-dbz-enrique.png'}
+                front={import.meta.env.BASE_URL + 'avatar-dbz-enrique.png'}
+                back={import.meta.env.BASE_URL + 'enrique-pic-version2.png' }
                 altFront="Enrique Donaire"
                 altBack="Enrique Donaire Dragon Ball Z"
               />
