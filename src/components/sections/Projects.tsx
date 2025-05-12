@@ -280,12 +280,12 @@ const Projects = () => {
 
       </motion.div>
 
-      <div className="text-center mt-12">
+      <div className="text-center mt-20">
         <a
           href="https://github.com/Enriquedonaire"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center bg-gray-800 dark:bg-gray-700 hover:bg-gray-900 dark:hover:bg-gray-600 text-white px-6 py-3 rounded-md font-medium transition-colors"
+          className="inline-flex items-center bg-gray-800 dark:bg-gray-700 hover:bg-gray-900 dark:hover:bg-gray-600 text-white px-6 py-3 pt-4 rounded-md font-medium transition-colors"
         >
           <span>See more on GitHub</span>
           <ExternalLink className="ml-2" size={20} />

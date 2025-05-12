@@ -12,6 +12,8 @@ const Hero = () => {
   const typedInstance = useRef<Typed | null>(null);
   const [isHovered] = useState(false);
 
+  const floatingPaperCount = window.innerWidth >= 1024 ? 6 : 3;
+
   useEffect(() => {
     if (typedEl.current) {
       typedInstance.current = new Typed(typedEl.current, {
@@ -58,7 +60,7 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex items-center">
       {/* Floating papers background */}
       <div className="absolute inset-0 overflow-hidden z-0">
-        <FloatingPaper count={4} />
+        <FloatingPaper count={floatingPaperCount} />
       </div>
 
       <ParticleBackground />
