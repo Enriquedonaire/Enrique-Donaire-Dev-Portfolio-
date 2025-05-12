@@ -153,14 +153,14 @@ const Projects = () => {
           <motion.div
             animate={{ x: [0, -15, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
-            className="text-teal-800/75 dark:text-white/80"
+            className="text-gray-100/75 dark:text-white/80"
           >
             <BsHandIndex size={40} className="transform -scale-x-100" />
           </motion.div>
           <motion.div
             animate={{ x: [0, 15, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
-            className="text-teal-800/75 dark:text-white/80"
+            className="text-gray-100/75 dark:text-white/80"
           >
             <BsHandIndex size={40} />
           </motion.div>
@@ -170,8 +170,21 @@ const Projects = () => {
           effect="cards"
           grabCursor={true}
           modules={[EffectCards]}
-          className="h-[420px] sm:h-[520px] md:h-[420px] lg:h-[600px] overflow-visible relative max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto"
+          className="h-[420px] sm:h-[520px] md:h-[420px] lg:h-[600px] overflow-visible relative max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto px-2"
           initialSlide={Math.floor(filteredProjects.length / 2)}
+          cardsEffect={{
+            perSlideRotate: 15,
+            perSlideOffset: 25,
+            slideShadows: false,
+            ...(window.innerWidth >= 1024 && {
+              perSlideRotate: 11, // Incremento de rotación para efecto abanico en pantallas grandes
+              perSlideOffset: 8, // Reducción de separación para unir más las tarjetas en la parte inferior
+            }),
+            ...(window.innerWidth < 1024 && {
+              perSlideRotate: 3, // Rotación más pronunciada para dispositivos más pequeños
+              perSlideOffset: 4, // Más unidas por debajo y separadas por arriba
+            })
+          }}
           onSwiper={swiper => {
             swiper.el.style.overflow = 'visible';
             swiper.slides.forEach(slide => {
@@ -179,81 +192,67 @@ const Projects = () => {
             });
           }}
         >
-          {/* 
-            Ajuste de separación de tarjetas:
-            perSlideOffset: 42 - ajustar este valor para cambiar la separación
-            - Aumentar para más separación
-            - Disminuir para menos separación
-          */}
-          <Swiper
-            effect="cards"
-            grabCursor={true}
-            modules={[EffectCards]}
-            className="h-[420px] sm:h-[520px] md:h-[420px] lg:h-[600px] overflow-visible relative max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto"
-            initialSlide={filteredProjects.findIndex(p => p.title === "InQbus Marketing")}
-            cardsEffect={{
-              perSlideRotate: 5,
-              perSlideOffset: 32, // Menor separación en mobile y mediano
-              slideShadows: false
-            }}
-            onSwiper={(swiper) => {
-              swiper.el.style.overflow = 'visible';
-              swiper.slides.forEach(slide => {
-                slide.style.overflow = 'visible';
-              });
-            }}
-          >
-            {filteredProjects.map((project, index) => (
-              <SwiperSlide
-                key={project.id}
-                className={`rounded-2xl overflow-visible relative transition-transform duration-300
-        ${[
-                    'bg-primary-500/90',
-                    'bg-teal-500/90',
-                    'bg-yellow-500/90',
-                    'bg-green-500/90',
-                    'bg-blue-500/90',
-                    'bg-teal-400/90',
-                    'bg-orange-500/90',
-                    'bg-pink-500/90',
-                    'bg-red-500/90'
-                  ][index % 7]} text-white backdrop-blur-md
-        custom-slide
-        shadow-2xl
-        dark:shadow-none
-      `}
+          {filteredProjects.map((project, index) => (
+            <SwiperSlide
+              key={project.id}
+              className={`rounded-2xl overflow-visible relative transition-transform duration-300
+                ${[
+                  'bg-primary-500/90',
+                  'bg-teal-500/90',
+                  'bg-yellow-500/90',
+                  'bg-green-500/90',
+                  'bg-blue-500/90',
+                  'bg-teal-400/90',
+                  'bg-orange-500/90',
+                  'bg-pink-500/90',
+                  'bg-red-500/90'
+                ][index % 7]} text-white backdrop-blur-md
+                custom-slide
+                shadow-2xl
+                dark:shadow-none
+              `}
+              style={{
+                zIndex: 10 - Math.abs(index - (filteredProjects.findIndex(p => p.title === "InQbus Marketing"))),
+                pointerEvents: 'auto',
+                minHeight: '480px',
+                maxHeight: '600px',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'stretch',
+                overflow: 'hidden',
+                marginLeft: 0,
+                marginRight: 0,
+              }}
+            >
+              {/* Glow personalizado por tema */}
+              <div
+                className="absolute inset-0 -z-10 rounded-3xl pointer-events-none"
                 style={{
-                  zIndex: 10 - Math.abs(index - (filteredProjects.findIndex(p => p.title === "InQbus Marketing"))),
-                  pointerEvents: 'auto',
+                  filter: 'blur(32px)',
+                  opacity: 0.85,
+                  background:
+                    document.documentElement.classList.contains('dark')
+                      ? '#0343639e'
+                      : 'rgba(124, 124, 124, 0.25)',
                 }}
-              >
-                {/* Glow personalizado por tema */}
-                <div
-                  className="absolute inset-0 -z-10 rounded-3xl"
-                  style={{
-                    filter: 'blur(32px)',
-                    opacity: 0.85,
-                    background:
-                      document.documentElement.classList.contains('dark')
-                        ? '#0343639e'
-                        : 'rgba(124, 124, 124, 0.25)',
-                  }}
-                />
+              />
 
-                <div className="h-full flex flex-col">
-                  <div className="relative h-56">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover rounded-t-2xl"
-                    />
-                  </div>
+              <div className="h-full flex flex-col justify-between overflow-y-auto px-0">
+                <div className="relative h-40 sm:h-56 md:h-72 lg:h-80 flex-shrink-0">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover rounded-t-2xl border-none shadow-none m-0"
+                    style={{ display: 'block', marginLeft: 0, marginRight: 0 }}
+                  />
+                </div>
 
-                  <div className="p-6 flex-1">
-                    <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-                    <p className="mb-4">{project.description}</p>
-
-                    <div className="flex flex-wrap gap-2 mb-4">
+                <div className="p-3 sm:p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-lg sm:text-2xl font-bold mb-2 sm:mb-4">{project.title}</h3>
+                    <p className="mb-2 sm:mb-4 text-sm sm:text-base">{project.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-2 sm:mb-4">
                       {project.tags.map(tag => (
                         <span
                           key={tag}
@@ -263,21 +262,20 @@ const Projects = () => {
                         </span>
                       ))}
                     </div>
-
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block px-4 py-2 bg-white text-primary-500 rounded-lg hover:bg-gray-100 transition-colors duration-300"
-                    >
-                      Live Demo
-                    </a>
                   </div>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block mt-2 sm:mt-4 px-4 py-2 bg-white text-primary-500 rounded-lg hover:bg-gray-100 transition-colors duration-300 w-full text-center font-semibold md:w-auto md:text-base md:px-4 md:py-2 md:rounded-lg md:inline-block md:mx-0 md:mt-0 md:mb-0 md:font-normal"
+                    style={{ minWidth: 'unset' }}
+                  >
+                    Live Demo
+                  </a>
                 </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-
+              </div>
+            </SwiperSlide>
+          ))}
         </Swiper>
 
       </motion.div>

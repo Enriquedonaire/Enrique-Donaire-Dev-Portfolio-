@@ -58,7 +58,7 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex items-center">
       {/* Floating papers background */}
       <div className="absolute inset-0 overflow-hidden z-0">
-        <FloatingPaper count={6} />
+        <FloatingPaper count={4} />
       </div>
 
       <ParticleBackground />
