@@ -17,12 +17,13 @@ const experiences: ExperienceType[] = [
     image: "henko-ai.jpeg",
     description: [
       "Spearheading the development of a Progressive Web App with an emphasis on intuitive interfaces and responsive designs",
-      "Successfully migrated legacy platforms to modern frameworks, utilizing ReactJS, Redux, and TailwindCSS",
+      "Successfully migrated legacy platforms to modern frameworks, utilizing NextJS, ReactJS, Redux, and TailwindCSS",
       "Designed and implemented dynamic interfaces with GraphQL and AI APIs to enhance functionality and user experience",
       "Automated business-critical operations, improving efficiency across pharmaceutical shipment and payment processes",
-      "Integrated advanced AI technologies including OpenAI, Whisper AI, Gladia AI, and Speech.io to build intuitive interfaces"
+      "Integrated advanced AI technologies including OpenAI, Whisper AI, Gladia AI, and Speech.io to build intuitive interfaces",
+      "Collaborated with cross-functional teams to gather requirements and provide ongoing support, ensuring satisfaction and project success",
     ],
-    skills: ["ReactJS", "Redux", "TailwindCSS", "GraphQL", "AI Integration", "PWA"]
+    skills: ["ReactJS", "NextJS", "Redux", "TailwindCSS", "GraphQL", "AI Integration", "AWS", "OpenAI", "Whisper AI", "Gladia AI", "Speech.io"]
   },
   {
     id: 2,
@@ -34,10 +35,11 @@ const experiences: ExperienceType[] = [
     description: [
       "Directed the evolution and optimization of a Progressive Web Application (PWA), prioritizing mobile-first design and scalability",
       "Drove success across 14 Agile-Scrum sprints, ensuring the seamless delivery of features through active participation in sprint planning, stand-ups, and presentations",
-      "Championed a comprehensive migration from outdated technologies (JavaScript ES5) to a modern stack using Vite, Vue 3, and TailwindCSS",
-      "Improved code quality and collaboration through consistent contributions to private and open-source projects, leveraging GitHub workflows"
+      "Championed  a  comprehensive  migration  from  outdatedtechnologies ( JavaScript/Typescript ES5) to a modern stack using Vite, Vue 3, NextJS and TailwindCSS.",
+      "Improved code quality and collaboration through consistent contributions to private and open-source projects, leveraging GitHub workflows",
+      "Implemented CI/CD pipelines and automated testing frameworks, ensuring high-quality code delivery and reducing deployment times",
     ],
-    skills: ["Vue.js", "Vite", "TailwindCSS", "PWA", "Agile/Scrum", "GitHub"]
+    skills: ["Vue.js", "Vite", "NextJS",  "ReactJS", "TailwindCSS", "PWA", "Agile/Scrum", "GitHub", "Open Source", "JavaScript", "TypeScript"]
   },
   {
     id: 3,
@@ -48,9 +50,12 @@ const experiences: ExperienceType[] = [
     image: "atSitemas2.jpg",
     description: [
       "Architected and deployed dynamic web solutions tailored to client specifications, surpassing expectations and boosting operational efficiency",
-      "Streamlined development workflows by integrating cutting-edge technologies, driving performance optimization across multiple projects"
+      "Streamlined development workflows by integrating cutting-edge technologies, driving performance optimization across multiple projects",
+      "Leveraged Next.js to develop fast, SEO-optimized web applications with server-side rendering and API routes, enhancing user experience and maintainability",
+      "Implemented CI/CD pipelines and automated testing frameworks, ensuring high-quality code delivery and reducing deployment times",
+      "Collaborated with cross-functional teams to gather requirements and provide ongoing support"
     ],
-    skills: ["React", "JavaScript", "RESTful APIs", "GitHub", "Front-end Development"]
+    skills: ["React", "NextJS", "JavaScript", "RESTful APIs", "GitHub", "Front-end Development"]
   },
   {
     id: 4,
@@ -61,9 +66,12 @@ const experiences: ExperienceType[] = [
     image: "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     description: [
       "Delivered custom software solutions to over 10 clients, ensuring scalability and seamless functionality",
-      "Cultivated expertise in AWS (EC2, S3, DynamoDB and Lambda), REST APIs, MongoDB, and the MERN stack, ensuring robust application performance"
+      "Cultivated expertise in NextJS, ReactJS, AWS ( Ec2, S3, DynamoDBand Lambda) REST APIs, MongoDB, Supabase and the MERN stack,ensuring robust application performance",
+      "Implemented responsive designs and user-friendly interfaces, enhancing user experience and engagement",
+      "Collaborated with clients to gather requirements and provide ongoing support, ensuring satisfaction and project success",
+      "Developed and maintained comprehensive documentation for all projects, ensuring clarity and ease of understanding for future developers"
     ],
-    skills: ["MongoDB", "Express.js", "React", "Node.js", "AWS", "REST APIs"]
+    skills: ["MongoDB", "Express.js", "React","NextJS", "Node.js", "AWS", "REST APIs"]
   }
 ];
 
