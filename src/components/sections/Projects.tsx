@@ -15,7 +15,7 @@ const projects: Project[] = [
   {
     id: 0,
     title: "Goku in the Cloud",
-    description: "Online Game | JavaScript - HTML - CSS - DOM Manipulation",
+    description: "Interactive game built with vanilla JavaScript and DOM manipulation. Optimized for browser performance.",
     image: "https://i.imgur.com/FuihTw0.jpg",
     tags: ["JavaScript", "HTML", "CSS", "Game"],
     link: "https://enriquedonaire.github.io/GOKU-IN-THE-CLOUD-GAME"
@@ -23,16 +23,15 @@ const projects: Project[] = [
   {
     id: 1,
     title: "Portfolio AV",
-    description: "Audiovisual Portfolio | Filmmaker's Showcase | Built with ReactJS, Material-UI",
+    description: "Audiovisual portfolio for filmmakers. Built with React and Material UI with responsive design and visual focus.",
     image: "https://miro.medium.com/v2/da:true/resize:fit:1200/0*gMblHlHipRsjwsU6",
     tags: ["React", "Material UI", "Portfolio"],
     link: "https://enriquedonaire.github.io/Portfolio-AV/"
   },
-
   {
     id: 2,
     title: "Login Page",
-    description: "Form | ReactJS | Tailwind-CSS | BEM",
+    description: "Clean and functional login form. Built with React, TailwindCSS and BEM methodology for maintainable styles.",
     image: "https://i.ytimg.com/vi/hlwlM4a5rxg/maxresdefault.jpg",
     tags: ["React", "TailwindCSS", "BEM", "Authentication"],
     link: "https://enriquedonaire.github.io/Alea-Test/"
@@ -40,7 +39,7 @@ const projects: Project[] = [
   {
     id: 3,
     title: "Pic-Finder",
-    description: "Image Gallery | A styled Image Searcher | ReactJS | Material UI",
+    description: "Modern-styled image search app built with React and Material UI. Integrated with an external image API.",
     image: "https://img.freepik.com/vector-gratis/imagen-estructura-metalica-poligonal-tacto-mano-humana-pantalla-electronica-ilustracion-vectorial-abstracta_1284-30756.jpg",
     tags: ["React", "Material UI", "Gallery"],
     link: "https://enriquedonaire.github.io/PicFinder-App"
@@ -48,7 +47,7 @@ const projects: Project[] = [
   {
     id: 4,
     title: "MyTheresa Movie App",
-    description: "Film App | A complete Movie App | ReactJS | SCSS | BEM",
+    description: "Movie application with search system and custom styling. Built using React, SCSS and BEM architecture.",
     image: "https://i.ytimg.com/vi/_TW4bCSs4gU/maxresdefault.jpg",
     tags: ["React", "SCSS", "BEM", "Movies"],
     link: "https://enriquedonaire.github.io/Mytheresa-movie-App-Test/"
@@ -56,7 +55,7 @@ const projects: Project[] = [
   {
     id: 5,
     title: "InQbus Marketing",
-    description: "Marketing Site | Next generation Marketing web site | TypeScript | NextJS | Express | Tailwind-css",
+    description: "Next-gen marketing website with SSR architecture using Next.js and Express. SEO-first and mobile-ready design.",
     image: import.meta.env.BASE_URL + 'InQbusPic.jpg',
     tags: ["TypeScript", "NextJS", "NodeJS", "Express", "Tailwind-css"],
     link: "https://inqbus.vercel.app"
@@ -64,7 +63,7 @@ const projects: Project[] = [
   {
     id: 6,
     title: "Miranda Hotel",
-    description: "Hotel Site | Next generation Hotel web site | JavaScript | NodeJS | Express | BEM",
+    description: "Hotel landing page with Express backend. Classical style using BEM and responsive layout design.",
     image: "https://www.barcelonairporthotel.com/wp-content/uploads/2023/09/Deluxe-2022-1.jpg",
     tags: ["JavaScript", "NodeJS", "Express", "BEM"],
     link: "https://enriquedonaire.github.io/Hotel-Miranda-WebPage"
@@ -72,7 +71,7 @@ const projects: Project[] = [
   {
     id: 7,
     title: "Dashboard A3M",
-    description: "Dashboard | A Full-Responsive Data Dashboard | ReactJS | TailwindCSS | BEM",
+    description: "Fully responsive data dashboard with metric panels. Built with React and Tailwind for clean data visualization.",
     image: "https://miro.medium.com/v2/resize:fit:1400/1*rQ3d_dKG7V2JhX8SrUjs6g.png",
     tags: ["React", "TailwindCSS", "BEM", "Dashboard"],
     link: "https://enriquedonaire.github.io/Dashboard-A3M/"
@@ -80,21 +79,21 @@ const projects: Project[] = [
   {
     id: 8,
     title: "Oxygen-Shop",
-    description: "Tech Shop | Responsive App | ReactJS | Material-UI",
+    description: "Responsive e-commerce app built with React and Material UI. Great for testing business logic and layout.",
     image: "https://f4.bcbits.com/img/a1309081681_65",
     tags: ["React", "Material UI", "E-commerce"],
     link: "https://Enriquedonaire.github.io/Oxygen-Shop-Enrique"
   },
-
   {
     id: 9,
     title: "CalculatorJS",
-    description: "Calculator | JavaScript | NodeJS | Express | BEM",
+    description: "Simple and efficient web calculator with backend in Node and Express. Styled using BEM structure.",
     image: "https://png.pngtree.com/thumb_back/fw800/background/20230618/pngtree-cartoon-style-3d-render-of-calculator-and-math-symbols-on-background-image_3631042.jpg",
     tags: ["JavaScript", "NodeJS", "Express", "BEM"],
     link: "https://enriquedonaire.github.io/JS-Calculator-Assignment"
   }
 ];
+
 
 const Projects = () => {
   const [filter, setFilter] = useState<string | null>(null);
