@@ -55,7 +55,7 @@ const experiences: ExperienceType[] = [
       "Implemented CI/CD pipelines and automated testing frameworks, ensuring high-quality code delivery and reducing deployment times",
       "Collaborated with cross-functional teams to gather requirements and provide ongoing support"
     ],
-    skills: ["React", "NextJS", "JavaScript", "RESTful APIs", "GitHub", "Front-end Development"]
+    skills: ["React", "NextJS", "JavaScript", "RESTful APIs", "GitHub", "Front-end"]
   },
   {
     id: 4,
