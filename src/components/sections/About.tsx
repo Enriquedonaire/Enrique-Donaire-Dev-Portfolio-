@@ -21,7 +21,7 @@ const About = () => {
         <div>
           <h3 className="text-2xl font-bold mb-4">I'm Enrique Donaire, a Full-Stack Developer & AI Frontend Engineer</h3>
           <p className="text-gray-700 dark:text-gray-300 mb-6">
-            With over four years of expertise in crafting high-performance web applications, I bring a unique perspective that combines innovative technology solutions with a deep understanding of user-centered design. I specialize in ReactJS, Vue.js, TypeScript, and GraphQL to build seamless digital experiences.
+            With five years of expertise in crafting high-performance web applications, I bring a unique perspective that combines innovative technology solutions with a deep understanding of user-centered design. I specialize in ReactJS, NextJS, VueJS, TypeScript, MongoDB, MySQL and GraphQL to build seamless digital experiences.
           </p>
           <p className="text-gray-700 dark:text-gray-300 mb-6">
             My background in healthcare gives me a sharp analytical mindset and a strong focus on delivering solutions that truly address user needs. As a proven leader in Agile environments, I excel at collaborating across teams to drive impactful projects while maintaining a commitment to continuous learning and excellence.
