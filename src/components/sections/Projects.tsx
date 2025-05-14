@@ -54,6 +54,14 @@ const projects: Project[] = [
   },
   {
     id: 5,
+    title: "La Aldea Cabins",
+    description: "Book cabins in the heart of Argentina's nature. A modern, responsive platform to find and reserve unique accommodations across the country. Built with React, Redux Toolkit, TailwindCSS, React Router, and EmailJS for a seamless experience, reservation management, and direct contact.",
+    image: "https://images.unsplash.com/photo-1587061949409-02df41d5e562?auto=format&fit=crop&w=1920&q=80",
+    tags: ["React", "Redux Toolkit", "TailwindCSS", "React Router", "EmailJS", "Booking", "Travel"],
+    link: "https://enriquedonaire.github.io/La-Aldea-Cabins"
+  },
+  {
+    id: 6,
     title: "InQbus Marketing",
     description: "Next-gen marketing website with SSR architecture using Next.js and Express. SEO-first and mobile-ready design.",
     image: import.meta.env.BASE_URL + 'InQbusPic.jpg',
@@ -61,7 +69,7 @@ const projects: Project[] = [
     link: "https://inqbus.vercel.app"
   },
   {
-    id: 6,
+    id: 7,
     title: "Miranda Hotel",
     description: "Hotel landing page with Express backend. Classical style using BEM and responsive layout design.",
     image: "https://www.barcelonairporthotel.com/wp-content/uploads/2023/09/Deluxe-2022-1.jpg",
@@ -69,7 +77,7 @@ const projects: Project[] = [
     link: "https://enriquedonaire.github.io/Hotel-Miranda-WebPage"
   },
   {
-    id: 7,
+    id: 8,
     title: "Dashboard A3M",
     description: "Fully responsive data dashboard with metric panels. Built with React and Tailwind for clean data visualization.",
     image: "https://miro.medium.com/v2/resize:fit:1400/1*rQ3d_dKG7V2JhX8SrUjs6g.png",
@@ -77,7 +85,7 @@ const projects: Project[] = [
     link: "https://enriquedonaire.github.io/Dashboard-A3M/"
   },
   {
-    id: 8,
+    id: 9,
     title: "Oxygen-Shop",
     description: "Responsive e-commerce app built with React and Material UI. Great for testing business logic and layout.",
     image: "https://f4.bcbits.com/img/a1309081681_65",
@@ -85,13 +93,13 @@ const projects: Project[] = [
     link: "https://Enriquedonaire.github.io/Oxygen-Shop-Enrique"
   },
   {
-    id: 9,
+    id: 10,
     title: "CalculatorJS",
     description: "Simple and efficient web calculator with backend in Node and Express. Styled using BEM structure.",
     image: "https://png.pngtree.com/thumb_back/fw800/background/20230618/pngtree-cartoon-style-3d-render-of-calculator-and-math-symbols-on-background-image_3631042.jpg",
     tags: ["JavaScript", "NodeJS", "Express", "BEM"],
     link: "https://enriquedonaire.github.io/JS-Calculator-Assignment"
-  }
+  },
 ];
 
 
@@ -170,7 +178,7 @@ const Projects = () => {
           grabCursor={true}
           modules={[EffectCards]}
           className="h-[420px] sm:h-[520px] md:h-[420px] lg:h-[600px] overflow-visible relative max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto px-2"
-          initialSlide={Math.floor(filteredProjects.length / 2)}
+          initialSlide={filteredProjects.findIndex(p => p.id === 6)}
           cardsEffect={{
             perSlideRotate: 15,
             perSlideOffset: 25,
@@ -195,17 +203,25 @@ const Projects = () => {
             <SwiperSlide
               key={project.id}
               className={`rounded-2xl overflow-visible relative transition-transform duration-300 mt-6
-                ${[
-                  'bg-primary-500/90',
-                  'bg-teal-500/90',
-                  'bg-yellow-500/90',
-                  'bg-green-500/90',
-                  'bg-blue-500/90',
-                  'bg-teal-400/90',
-                  'bg-orange-500/90',
-                  'bg-pink-500/90',
-                  'bg-red-500/90'
-                ][index % 7]} text-white backdrop-blur-md
+                ${
+                  project.id === 6
+                    ? 'bg-teal-500/90' // InQbus Marketing - celeste
+                    : project.id === 7
+                    ? 'bg-orange-900/90' // Miranda Hotel - marrón
+                    : project.id === 5
+                    ? 'bg-green-600/90' // La Aldea Cabins - verde
+                    : [
+                        'bg-primary-500/90',
+                        'bg-teal-500/90',
+                        'bg-yellow-500/90',
+                        'bg-green-500/90',
+                        'bg-blue-500/90',
+                        'bg-teal-400/90',
+                        'bg-orange-500/90',
+                        'bg-pink-500/90',
+                        'bg-red-500/90'
+                      ][index % 7]
+                } text-white backdrop-blur-md
                 custom-slide
                 shadow-2xl
                 dark:shadow-none
