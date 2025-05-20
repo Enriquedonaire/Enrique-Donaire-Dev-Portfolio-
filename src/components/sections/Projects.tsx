@@ -68,6 +68,7 @@ const projects: Project[] = [
     tags: ["TypeScript", "NextJS", "NodeJS", "Express", "Tailwind-css"],
     link: "https://inqbus.vercel.app"
   },
+  
   {
     id: 7,
     title: "Miranda Hotel",
@@ -78,6 +79,25 @@ const projects: Project[] = [
   },
   {
     id: 8,
+    title: "Jobies",
+    description:
+      "Modern job board for posting, searching, and filtering jobs. Admin dashboard, simulated auth, responsive UI, light/dark mode, and tests. Built with React 19, Next.js 14, Tailwind CSS, shadcn/ui.",
+    image: import.meta.env.BASE_URL + 'Jobies - Job Board.jpg',
+    tags: [
+      "React 19",
+      "Next.js 14",
+      "App Router",
+      "Context API",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Jest",
+      "Testing Library",
+      "Job Board"
+    ],
+    link: "https://jobies-xi.vercel.app"
+  },
+  {
+    id: 9,
     title: "Dashboard A3M",
     description: "Fully responsive data dashboard with metric panels. Built with React and Tailwind for clean data visualization.",
     image: "https://miro.medium.com/v2/resize:fit:1400/1*rQ3d_dKG7V2JhX8SrUjs6g.png",
@@ -85,7 +105,7 @@ const projects: Project[] = [
     link: "https://enriquedonaire.github.io/Dashboard-A3M/"
   },
   {
-    id: 9,
+    id: 10,
     title: "Oxygen-Shop",
     description: "Responsive e-commerce app built with React and Material UI. Great for testing business logic and layout.",
     image: "https://f4.bcbits.com/img/a1309081681_65",
@@ -93,7 +113,7 @@ const projects: Project[] = [
     link: "https://Enriquedonaire.github.io/Oxygen-Shop-Enrique"
   },
   {
-    id: 10,
+    id: 11,
     title: "CalculatorJS",
     description: "Simple and efficient web calculator with backend in Node and Express. Styled using BEM structure.",
     image: "https://png.pngtree.com/thumb_back/fw800/background/20230618/pngtree-cartoon-style-3d-render-of-calculator-and-math-symbols-on-background-image_3631042.jpg",
@@ -202,7 +222,7 @@ const Projects = () => {
           {filteredProjects.map((project, index) => (
             <SwiperSlide
               key={project.id}
-              className={`rounded-2xl overflow-visible relative transition-transform duration-300 mt-6
+              className={`rounded-2xl overflow-hidden relative transition-transform duration-300 mt-6
                 ${
                   project.id === 6
                     ? 'bg-teal-500/90' // InQbus Marketing - celeste
@@ -210,6 +230,8 @@ const Projects = () => {
                     ? 'bg-orange-900/90' // Miranda Hotel - marrón
                     : project.id === 5
                     ? 'bg-green-600/90' // La Aldea Cabins - verde
+                    : project.id === 11
+                    ? 'bg-green-700/90' // Jobies - verde
                     : [
                         'bg-primary-500/90',
                         'bg-teal-500/90',
@@ -253,19 +275,18 @@ const Projects = () => {
                 }}
               />
 
-              <div className="h-full flex flex-col justify-between overflow-y-auto px-0">
+              <div className="h-full flex flex-col justify-between px-0">
                 <div className="relative h-40 sm:h-56 md:h-72 lg:h-80 flex-shrink-0">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover rounded-t-2xl border-none shadow-none m-0"
+                    className={`w-full h-full rounded-t-2xl border-none shadow-none m-0 ${project.id === 11 ? 'object-cover object-top' : 'object-cover'}`}
                     style={{ display: 'block', marginLeft: 0, marginRight: 0 }}
                   />
                 </div>
-
-                <div className="p-3 sm:p-6 flex-1 flex flex-col justify-between">
+                <div className="p-3 sm:p-6 flex-1 flex flex-col justify-between min-h-[200px]">
                   <div>
-                    <h3 className="text-lg sm:text-2xl font-bold mb-2 sm:mb-4">{project.title}</h3>
+                    <h3 className="text-lg sm:text-2xl font-bold mb-2 sm:mb-4 truncate">{project.title}</h3>
                     <p className="mb-2 sm:mb-4 text-sm sm:text-base">{project.description}</p>
                     <div className="flex flex-wrap gap-2 mb-2 sm:mb-4">
                       {project.tags.map(tag => (
