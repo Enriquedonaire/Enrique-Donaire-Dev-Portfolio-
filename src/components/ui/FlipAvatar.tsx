@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface FlipAvatarProps {
   front: string;
@@ -10,7 +10,19 @@ interface FlipAvatarProps {
 
 const FlipAvatar = ({ front, back, altFront = '', altBack = '', flipped }: FlipAvatarProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  const isFlipped = flipped !== undefined ? flipped : isHovered;
+  const [disableHover, setDisableHover] = useState(true); // Deshabilita hover temporalmente
+
+  // Ajusta la lógica para que el hover funcione correctamente después del giro inicial
+  const isFlipped = flipped || (!disableHover && isHovered); // Prioriza flipped si está definido, luego hover si está habilitado
+
+  useEffect(() => {
+    if (flipped !== undefined) {
+      setDisableHover(true); // Desactiva hover durante el giro inicial
+      const timer = setTimeout(() => setDisableHover(false), 1200); // Reactiva hover después del giro inicial
+      return () => clearTimeout(timer);
+    }
+  }, [flipped]);
+
   return (
     <div
       className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20 dark:border-black/20 z-10 flip-avatar"
