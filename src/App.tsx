@@ -32,7 +32,7 @@ function App() {
           <>
             <Header />
             <main className="overflow-hidden">
-              <Hero />
+              <Hero loading={loading} />
               <About />
               <Experience />
               <Skills />

@@ -7,10 +7,15 @@ import Typed from 'typed.js';
 import FlipAvatar from '@components/ui/FlipAvatar';
 import { FloatingPaper } from '@components/common/floating-papers';
 
-const Hero = () => {
+interface HeroProps {
+  loading: boolean;
+}
+
+const Hero = ({ loading }: HeroProps) => {
   const typedEl = useRef<HTMLSpanElement>(null);
   const typedInstance = useRef<Typed | null>(null);
   const [isHovered] = useState(false);
+  const [flipped, setFlipped] = useState(false);
 
   const floatingPaperCount = window.innerWidth >= 1024 ? 6 : 3;
 
@@ -36,6 +41,20 @@ const Hero = () => {
       }
     };
   }, []);
+
+  // Efecto para girar el avatar después de que desaparece el loader y 1s de espera
+  useEffect(() => {
+    if (!loading) {
+      const timer1 = setTimeout(() => {
+        setFlipped(true); // Girar a la foto
+        const timer2 = setTimeout(() => {
+          setFlipped(false); // Volver al avatar
+        }, 1200); // Tiempo que se muestra la foto
+        return () => clearTimeout(timer2);
+      }, 1000); // Espera 1s tras el loader
+      return () => clearTimeout(timer1);
+    }
+  }, [loading]);
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -109,6 +128,7 @@ const Hero = () => {
                 back={import.meta.env.BASE_URL + 'enrique-pic-version2.png' }
                 altFront="Enrique Donaire"
                 altBack="Enrique Donaire Dragon Ball Z"
+                flipped={flipped}
               />
             </div>
           </motion.div>

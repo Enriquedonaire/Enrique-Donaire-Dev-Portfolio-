@@ -5,10 +5,12 @@ interface FlipAvatarProps {
   back: string;
   altFront?: string;
   altBack?: string;
+  flipped?: boolean; // Permite control externo
 }
 
-const FlipAvatar = ({ front, back, altFront = '', altBack = '' }: FlipAvatarProps) => {
+const FlipAvatar = ({ front, back, altFront = '', altBack = '', flipped }: FlipAvatarProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const isFlipped = flipped !== undefined ? flipped : isHovered;
   return (
     <div
       className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20 dark:border-black/20 z-10 flip-avatar"
@@ -17,7 +19,7 @@ const FlipAvatar = ({ front, back, altFront = '', altBack = '' }: FlipAvatarProp
       style={{ perspective: '1200px' }}
     >
       <div
-        className={`absolute inset-0 w-full h-full transition-transform duration-700 flip-inner ${isHovered ? 'flip-rotated' : ''}`}
+        className={`absolute inset-0 w-full h-full transition-transform duration-700 flip-inner ${isFlipped ? 'flip-rotated' : ''}`}
         style={{ transformStyle: 'preserve-3d' }}
       >
         {/* Front */}
