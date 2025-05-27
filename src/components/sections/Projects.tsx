@@ -54,6 +54,14 @@ const projects: Project[] = [
   },
   {
     id: 5,
+    title: "Mobile Shop - E-commerce",
+    description: "Mobile e-commerce app for purchasing smartphones. Built with a modern and responsive design to enhance the shopping experience.",
+    image: import.meta.env.BASE_URL + 'MobileShop.jpg',
+    tags: ["React", "E-commerce", "Mobile"],
+    link: "https://enriquedonaire.github.io/Inditex-Mobile-Shop"
+  },
+  {
+    id: 6,
     title: "La Aldea Cabins",
     description: "Book cabins in the heart of Argentina's nature. A modern, responsive platform to find and reserve unique accommodations across the country. Built with React, Redux Toolkit, TailwindCSS, React Router, and EmailJS for a seamless experience, reservation management, and direct contact.",
     image: "https://images.unsplash.com/photo-1587061949409-02df41d5e562?auto=format&fit=crop&w=1920&q=80",
@@ -61,16 +69,16 @@ const projects: Project[] = [
     link: "https://enriquedonaire.github.io/La-Aldea-Cabins"
   },
   {
-    id: 6,
+    id: 7,
     title: "InQbus Marketing",
     description: "Next-gen marketing website with SSR architecture using Next.js and Express. SEO-first and mobile-ready design.",
     image: import.meta.env.BASE_URL + 'InQbusPic.jpg',
     tags: ["TypeScript", "NextJS", "NodeJS", "Express", "Tailwind-css"],
     link: "https://inqbus.vercel.app"
   },
-  
+
   {
-    id: 7,
+    id: 8,
     title: "Miranda Hotel",
     description: "Hotel landing page with Express backend. Classical style using BEM and responsive layout design.",
     image: "https://www.barcelonairporthotel.com/wp-content/uploads/2023/09/Deluxe-2022-1.jpg",
@@ -78,7 +86,7 @@ const projects: Project[] = [
     link: "https://enriquedonaire.github.io/Hotel-Miranda-WebPage"
   },
   {
-    id: 8,
+    id: 9,
     title: "Jobies",
     description:
       "Modern job board for posting, searching, and filtering jobs. Admin dashboard, simulated auth, responsive UI, light/dark mode, and tests. Built with React 19, Next.js 14, Tailwind CSS, shadcn/ui.",
@@ -97,7 +105,7 @@ const projects: Project[] = [
     link: "https://jobies-xi.vercel.app"
   },
   {
-    id: 9,
+    id: 10,
     title: "Dashboard A3M",
     description: "Fully responsive data dashboard with metric panels. Built with React and Tailwind for clean data visualization.",
     image: "https://miro.medium.com/v2/resize:fit:1400/1*rQ3d_dKG7V2JhX8SrUjs6g.png",
@@ -105,7 +113,7 @@ const projects: Project[] = [
     link: "https://enriquedonaire.github.io/Dashboard-A3M/"
   },
   {
-    id: 10,
+    id: 11,
     title: "Oxygen-Shop",
     description: "Responsive e-commerce app built with React and Material UI. Great for testing business logic and layout.",
     image: "https://f4.bcbits.com/img/a1309081681_65",
@@ -113,7 +121,7 @@ const projects: Project[] = [
     link: "https://Enriquedonaire.github.io/Oxygen-Shop-Enrique"
   },
   {
-    id: 11,
+    id: 12,
     title: "CalculatorJS",
     description: "Simple and efficient web calculator with backend in Node and Express. Styled using BEM structure.",
     image: "https://png.pngtree.com/thumb_back/fw800/background/20230618/pngtree-cartoon-style-3d-render-of-calculator-and-math-symbols-on-background-image_3631042.jpg",
@@ -223,26 +231,25 @@ const Projects = () => {
             <SwiperSlide
               key={project.id}
               className={`rounded-2xl overflow-hidden relative transition-transform duration-300 mt-6
-                ${
-                  project.id === 6
-                    ? 'bg-teal-500/90' // InQbus Marketing - celeste
-                    : project.id === 7
+                ${project.id === 7
+                  ? 'bg-teal-500/90' // InQbus Marketing - celeste
+                  : project.id === 8
                     ? 'bg-orange-900/90' // Miranda Hotel - marrón
                     : project.id === 5
-                    ? 'bg-green-600/90' // La Aldea Cabins - verde
-                    : project.id === 11
-                    ? 'bg-green-700/90' // Jobies - verde
-                    : [
-                        'bg-primary-500/90',
-                        'bg-teal-500/90',
-                        'bg-yellow-500/90',
-                        'bg-green-500/90',
-                        'bg-blue-500/90',
-                        'bg-teal-400/90',
-                        'bg-orange-500/90',
-                        'bg-pink-500/90',
-                        'bg-red-500/90'
-                      ][index % 7]
+                      ? 'bg-rose-400/90' // La Aldea Cabins - verde
+                      : project.id === 6
+                        ? 'bg-green-700/90' // Jobies - verde
+                        : [
+                          'bg-primary-500/90',
+                          'bg-teal-500/90',
+                          'bg-yellow-500/90',
+                          'bg-green-500/90',
+                          'bg-blue-500/90',
+                          'bg-teal-400/90',
+                          'bg-orange-500/90',
+                          'bg-pink-500/90',
+                          'bg-red-500/90'
+                        ][index % 7]
                 } text-white backdrop-blur-md
                 custom-slide
                 shadow-2xl
