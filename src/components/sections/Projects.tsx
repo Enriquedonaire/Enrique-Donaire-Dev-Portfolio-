@@ -29,8 +29,8 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Login Page",
-    description: "Clean and functional login form. Built with React, TailwindCSS and BEM methodology for maintainable styles.",
+    title: "Dashboard QuickAds",
+    description: "Clean and functional dashboard for managing ads. Built with React, TailwindCSS and BEM methodology for maintainable styles.",
     image: "https://i.ytimg.com/vi/hlwlM4a5rxg/maxresdefault.jpg",
     tags: ["React", "TailwindCSS", "BEM", "Authentication"],
     link: "https://enriquedonaire.github.io/Alea-Test/"
@@ -45,7 +45,7 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    title: "MyTheresa Movie App",
+    title: "FlixHub - Movie App",
     description: "Movie application with search system and custom styling. Built using React, SCSS and BEM architecture.",
     image: "https://i.ytimg.com/vi/_TW4bCSs4gU/maxresdefault.jpg",
     tags: ["React", "SCSS", "BEM", "Movies"],
