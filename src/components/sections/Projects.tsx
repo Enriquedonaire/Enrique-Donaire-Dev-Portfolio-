@@ -97,9 +97,6 @@ const projects: Project[] = [
       "Context API",
       "Tailwind CSS",
       "shadcn/ui",
-      "Jest",
-      "Testing Library",
-      "Job Board"
     ],
     link: "https://jobies-xi.vercel.app"
   },
