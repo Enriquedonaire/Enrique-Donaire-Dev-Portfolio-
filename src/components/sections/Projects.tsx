@@ -195,14 +195,14 @@ const Projects = () => {
           <motion.div
             animate={{ x: [0, -15, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
-            className="text-gray-100/75 dark:text-white/80"
+            className="text-gray-100/75 dark:text-black/80"
           >
             <BsHandIndex size={40} className="transform -scale-x-100" />
           </motion.div>
           <motion.div
             animate={{ x: [0, 15, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
-            className="text-gray-100/75 dark:text-white/80"
+            className="text-gray-100/75 dark:text-black/80"
           >
             <BsHandIndex size={40} />
           </motion.div>
