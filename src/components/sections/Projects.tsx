@@ -7,7 +7,6 @@ import { ExternalLink } from 'lucide-react';
 import { BsHandIndex } from 'react-icons/bs';
 import { Project } from '@/types';
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-cards';
 
@@ -206,7 +205,7 @@ const Projects = () => {
           grabCursor={true}
           modules={[EffectCards]}
           className="h-[420px] sm:h-[520px] md:h-[420px] lg:h-[600px] overflow-visible relative max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto px-2"
-          initialSlide={filteredProjects.findIndex(p => p.id === 6)}
+          initialSlide={filteredProjects.findIndex(p => p.title === "InQbus Marketing")}
           cardsEffect={{
             perSlideRotate: 15,
             perSlideOffset: 25,
@@ -232,19 +231,19 @@ const Projects = () => {
               key={project.id}
               className={`rounded-2xl overflow-hidden relative transition-transform duration-300 mt-6
                 ${project.id === 7
-                  ? 'bg-teal-500/90' // InQbus Marketing - celeste
-                  : project.id === 8
-                    ? 'bg-orange-900/90' // Miranda Hotel - marrón
+                  ? 'bg-teal-400/90' 
+                  : project.id === 6
+                    ? 'bg-green-700/90' 
                     : project.id === 5
-                      ? 'bg-rose-400/90' // La Aldea Cabins - verde
-                      : project.id === 6
-                        ? 'bg-green-700/90' // Jobies - verde
+                      ? 'bg-violet-900/90' 
+                      : project.id === 4
+                        ? 'bg-red-700/90' 
                         : [
                           'bg-primary-500/90',
-                          'bg-teal-500/90',
-                          'bg-yellow-500/90',
-                          'bg-green-500/90',
-                          'bg-blue-500/90',
+                          'bg-orange-800/90',
+                          'bg-sky-950/90',
+                          'bg-pink-600/90',
+                          'bg-violet-500/90',
                           'bg-teal-400/90',
                           'bg-orange-500/90',
                           'bg-pink-500/90',
@@ -256,7 +255,7 @@ const Projects = () => {
                 dark:shadow-none
               `}
               style={{
-                zIndex: 10 - Math.abs(index - (filteredProjects.findIndex(p => p.title === "InQbus Marketing"))),
+                zIndex: 12 - Math.abs(index - (filteredProjects.findIndex(p => p.title === "InQbus Marketing"))),
                 pointerEvents: 'auto',
                 minHeight: '480px',
                 maxHeight: '600px',
