@@ -1,24 +1,23 @@
 import { motion } from 'framer-motion';
 import Section from '@components/common/Section';
 import { Skill } from '@/types';
+import { FaReact, FaJs, FaVuejs, FaNodeJs, FaDatabase, FaFigma, FaTrailer, FaGithub, FaAmazon, FaMicrosoft, FaHtml5 } from 'react-icons/fa'
 import { 
   Code, 
   Server, 
-  Palette, 
   Workflow, 
-  BrainCircuit, 
-  Database, 
-  Figma, 
+  BrainCircuit,
   Users, 
   Languages, 
   CheckCircle2 
 } from 'lucide-react';
 import TechStackCloud from '@components/skills/TechStackCloud';
+import { siApollographql, siExpress, siMysql, siTailwindcss, siTypescript } from 'simple-icons';
 
 const skills: Skill[] = [
   // Frontend
-  { name: "ReactJS", level: 95, category: "frontend" },
-  { name: "JavaScript", level: 95, category: "frontend" },
+  { name: "ReactJS", level: 95, category: "frontend"},
+  { name: "JavaScript", level: 95, category: "frontend",  },
   { name: "TypeScript", level: 90, category: "frontend" },
   { name: "Vue.js", level: 85, category: "frontend" },
   { name: "NextJS", level: 85, category: "frontend" },
@@ -71,16 +70,114 @@ const getCategoryIcon = (category: Skill['category']) => {
 
 const getSkillIcon = (name: string) => {
   const lowerName = name.toLowerCase();
-  
-  if (lowerName.includes('react')) return <Code className="text-blue-400" />;
-  if (lowerName.includes('vue')) return <Code className="text-green-400" />;
-  if (lowerName.includes('node')) return <Server className="text-green-600" />;
-  if (lowerName.includes('mongo')) return <Database className="text-green-500" />;
+  if (lowerName.includes('javascript')) return <FaJs className="text-yellow-500" />;
+  if (lowerName.includes('react')) return <FaReact className="text-blue-400" />;
+  if (lowerName.includes('vue')) return <FaVuejs className="text-green-400" />;
+  if (lowerName.includes('node')) return <FaNodeJs className="text-green-600" />;
+  if (lowerName.includes('mongo')) return <FaDatabase className="text-green-500" />;
   if (lowerName.includes('graph')) return <BrainCircuit className="text-pink-500" />;
-  if (lowerName.includes('figma')) return <Figma className="text-purple-500" />;
+  if (lowerName.includes('figma')) return <FaFigma className="text-purple-500" />;
   if (lowerName.includes('language')) return <Languages className="text-blue-500" />;
-  if (lowerName.includes('tailwind')) return <Palette className="text-blue-400" />;
-  
+  if (lowerName.includes('tailwind')) return <FaTrailer className="text-blue-400" />;
+  if (lowerName.includes('github')) return <FaGithub className="text-gray-500" />;
+  if (lowerName.includes('azure')) return <FaMicrosoft  className="text-blue-500" />;
+  if (lowerName.includes('html')) return <FaHtml5 className="text-orange-500" />;
+  if (lowerName.includes('aws')) return <FaAmazon className="text-yellow-500" />;
+  if (lowerName.includes('typescript')) {
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        width="1em"
+        height="1em"
+        className="text-blue-600"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-label="TypeScript"
+      >
+        <path d={siTypescript.path} />
+      </svg>
+    );
+  }
+  if (lowerName.includes('tailwindcss')) {
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        width="1em"
+        height="1em"
+        className="text-blue-600"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-label="Tailwind CSS"
+      >
+        <path d={siTailwindcss.path} />
+      </svg>
+    );
+  }
+  if (lowerName.includes('express')) {
+    return (
+      siExpress && (
+        <svg  
+          viewBox="0 0 24 24"
+          width="1em"
+          height="1em"
+          className="text-green-600"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-label="Express.js"
+        >
+          <path d={siExpress.path} />
+        </svg>
+      )
+  );
+  }
+
+  if (lowerName.includes('mysql')) {
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        width="1em"
+        height="1em"
+        className="text-blue-600"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-label="MySQL"
+      >
+        <path d={siMysql.path} />
+      </svg>  
+    );
+  }
+  if (lowerName.includes('apollo')) {
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        width="1em"
+        height="1em"
+        className="text-blue-600"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-label="Apollo GraphQL"
+      >
+        <path d={siApollographql.path} />
+      </svg>
+    );
+  }
+  if (lowerName.includes('next')) {
+    // Render the SVG path from simple-icons
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        width="1em"
+        height="1em"
+        className="text-gray-800 dark:text-gray-200"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-label="Vercel"
+      >
+        <path d="M24 22.525H0l12-21.05 12 21.05z" />
+      </svg>
+    );
+  }
+
   return <CheckCircle2 className="text-primary-400" />;
 };
 
@@ -146,7 +243,7 @@ const SkillsSection = () => {
                 <div key={skill.name} className="space-y-2">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
-                      {getSkillIcon(skill.name)}
+                      {skill.icon || getSkillIcon(skill.name)}
                       <span className="ml-2 text-gray-700 dark:text-gray-300">
                         {skill.name}
                       </span>
