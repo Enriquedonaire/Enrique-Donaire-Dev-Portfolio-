@@ -102,7 +102,7 @@ const projects: Project[] = [
   },
   {
     id: 10,
-    title: "Dashboard A3M",
+    title: "Dashboard Q2",
     description: "Fully responsive data dashboard with metric panels. Built with React and Tailwind for clean data visualization.",
     image: "https://miro.medium.com/v2/resize:fit:1400/1*rQ3d_dKG7V2JhX8SrUjs6g.png",
     tags: ["React", "TailwindCSS", "BEM", "Dashboard"],
