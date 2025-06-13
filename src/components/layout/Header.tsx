@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-scroll';
-import { Menu, X, Moon, Sun, Github, Linkedin, Mail } from 'lucide-react';
+import { Menu, X, Moon, Sun, Github, Linkedin } from 'lucide-react';
 import { useTheme } from '@components/providers/ThemeProvider';
 import { NavItem } from '@/types';
 
@@ -136,13 +136,6 @@ const Header = () => {
             >
               <Linkedin size={20} />
             </a>
-            <a
-              href="mailto:donaire.q2@gmail.com"
-              aria-label="Email"
-              className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
-            >
-              <Mail size={20} />
-            </a>
           </div>
           <button
             onClick={toggleTheme}
@@ -219,13 +212,6 @@ const Header = () => {
                     className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
                   >
                     <Linkedin size={24} />
-                  </a>
-                  <a
-                    href="mailto:donaire.q2@gmail.com"
-                    aria-label="Email"
-                    className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
-                  >
-                    <Mail size={24} />
                   </a>
                 </div>
               </div>

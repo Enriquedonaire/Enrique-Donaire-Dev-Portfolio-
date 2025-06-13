@@ -151,19 +151,6 @@ const Contact = () => {
                       <circle cx="4" cy="4" r="2"></circle>
                     </svg>
                   </a>
-                  <a 
-                    href="https://enriquedonaire.github.io/Portfolio-Web-Dev" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-gray-100 dark:bg-gray-800 p-3 rounded-full text-gray-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/30 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-                    aria-label="Portfolio"
-                  >
-                    {/* ...svg... */}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                    </svg>
-                  </a>
                   <a
                     href={import.meta.env.BASE_URL + 'Enrique-A-Donaire-Web-Dev-2025.pdf'}
                     download
