@@ -153,7 +153,7 @@ const Hero = ({ loading }: HeroProps) => {
               className="text-gray-600 dark:text-gray-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto"
               variants={itemVariants}
             >
-              Versatile and results-driven developer with over four years of expertise in
+              Versatile and results-driven developer with five years of expertise in
               crafting high-performance web applications using cutting-edge technologies.
             </motion.p>
 
