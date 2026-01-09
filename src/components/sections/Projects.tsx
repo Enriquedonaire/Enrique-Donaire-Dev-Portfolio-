@@ -102,14 +102,6 @@ const projects: Project[] = [
   },
   {
     id: 10,
-    title: "Dashboard Q2",
-    description: "Fully responsive data dashboard with metric panels. Built with React and Tailwind for clean data visualization.",
-    image: "https://miro.medium.com/v2/resize:fit:1400/1*rQ3d_dKG7V2JhX8SrUjs6g.png",
-    tags: ["React", "TailwindCSS", "BEM", "Dashboard"],
-    link: "https://enriquedonaire.github.io/Dashboard-A3M/"
-  },
-  {
-    id: 11,
     title: "Ego Studio Draw Editor",
     description: "AI-powered drawing editor. Designed with Next.js, Vercel, TypeScript, and Tailwind CSS for a modern and interactive creative experience.",
     image: import.meta.env.BASE_URL + 'EgoStudioLogo.png',
@@ -117,7 +109,7 @@ const projects: Project[] = [
     link: "https://ego-studio-draw-editor.vercel.app"
   },
   {
-    id: 12,
+    id: 11,
     title: "Oxygen-Shop",
     description: "Responsive e-commerce app built with React and Material UI. Great for testing business logic and layout.",
     image: "https://f4.bcbits.com/img/a1309081681_65",
@@ -125,7 +117,7 @@ const projects: Project[] = [
     link: "https://Enriquedonaire.github.io/Oxygen-Shop-Enrique"
   },
   {
-    id: 13,
+    id: 12,
     title: "CalculatorJS",
     description: "Simple and efficient web calculator with backend in Node and Express. Styled using BEM structure.",
     image: "https://png.pngtree.com/thumb_back/fw800/background/20230618/pngtree-cartoon-style-3d-render-of-calculator-and-math-symbols-on-background-image_3631042.jpg",
