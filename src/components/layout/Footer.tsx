@@ -99,7 +99,7 @@ const Footer = () => {
               <Linkedin size={20} />
             </a>
             <a
-              href={import.meta.env.BASE_URL + 'Enrique-A-Donaire-Web-Dev-2025.pdf'}
+              href={import.meta.env.BASE_URL + 'Enrique-Donaire-Full-Stack-Web-Dev-2026.pdf'}
               download
               aria-label="Descargar CV"
               className="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
