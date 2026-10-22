@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-scroll';
-import { Menu, X, Moon, Sun, Github, Linkedin } from 'lucide-react';
+import { Menu, X, Moon, Sun, Github, Linkedin, Download } from 'lucide-react';
 import { useTheme } from '@components/providers/ThemeProvider';
 import { NavItem } from '@/types';
+
+const CV_URL = import.meta.env.BASE_URL + 'Enrique-Donaire-Full-Stack-Web-Dev-2026.pdf';
 
 const navItems: NavItem[] = [
   { label: 'Home', href: 'home' },
@@ -137,6 +139,15 @@ const Header = () => {
               <Linkedin size={20} />
             </a>
           </div>
+          <a
+            href={CV_URL}
+            download
+            aria-label="Download CV"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-primary-500 to-secondary-500 hover:opacity-90 shadow-md transition-opacity"
+          >
+            <Download size={16} />
+            CV
+          </a>
           <button
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
@@ -193,6 +204,16 @@ const Header = () => {
                     </Link>
                   ))}
                 </nav>
+
+                <a
+                  href={CV_URL}
+                  download
+                  onClick={() => setIsOpen(false)}
+                  className="mt-8 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-primary-500 to-secondary-500 shadow-md"
+                >
+                  <Download size={20} />
+                  Download CV
+                </a>
 
                 <div className="mt-auto flex justify-center space-x-8 py-6">
                   <a
