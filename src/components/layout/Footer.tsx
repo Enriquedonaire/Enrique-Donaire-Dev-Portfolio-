@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className="bg-gray-100 dark:bg-gray-900 py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-6 md:mb-0">
+          <div className="mb-6 md:mb-0 text-center md:text-left">
             <Link
               to="home"
               smooth={true}
@@ -22,8 +22,8 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-8">
-            <nav className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6">
+          <div className="flex items-center">
+            <nav className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm md:text-base">
               <Link
                 to="home"
                 smooth={true}
