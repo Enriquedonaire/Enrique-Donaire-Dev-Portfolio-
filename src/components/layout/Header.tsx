@@ -51,8 +51,11 @@ const Header = () => {
   }, [isOpen]);
 
   return (
+    <>
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isOpen
+        ? 'bg-white dark:bg-dark py-3 shadow-md'
+        : scrolled
         ? 'bg-white/80 dark:bg-dark/80 backdrop-blur-md py-3 shadow-md'
         : 'bg-transparent py-5'
         }`}
@@ -176,71 +179,73 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 top-[60px] bg-white dark:bg-dark z-40 md:hidden"
-            >
-              <div className="flex flex-col h-full px-6 py-8 overflow-y-auto">
-                <nav className="flex flex-col space-y-6 text-lg">
-                  {navItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      to={item.href}
-                      spy={true}
-                      smooth={true}
-                      duration={500}
-                      offset={-80}
-                      onClick={() => setIsOpen(false)}
-                      activeClass="text-primary-500 dark:text-primary-400"
-                      className="font-medium py-2 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </nav>
-
-                <a
-                  href={CV_URL}
-                  download
-                  onClick={() => setIsOpen(false)}
-                  className="mt-8 inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-medium bg-gray-100/70 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/30 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-                >
-                  <Download size={18} />
-                  Download CV
-                </a>
-
-                <div className="mt-auto flex justify-center space-x-8 py-6">
-                  <a
-                    href="https://github.com/Enriquedonaire"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub Profile"
-                    className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
-                  >
-                    <Github size={24} />
-                  </a>
-                  <a
-                    href="https://linkedin.com/in/enrique-donaire"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn Profile"
-                    className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
-                  >
-                    <Linkedin size={24} />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </header>
+
+    {/* Mobile Menu */}
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 bg-white dark:bg-dark z-[45] md:hidden pt-24"
+        >
+          <div className="flex flex-col h-full px-6 py-8 overflow-y-auto">
+            <nav className="flex flex-col space-y-6 text-lg">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                  offset={-80}
+                  onClick={() => setIsOpen(false)}
+                  activeClass="text-primary-500 dark:text-primary-400"
+                  className="font-medium py-2 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
+            <a
+              href={CV_URL}
+              download
+              onClick={() => setIsOpen(false)}
+              className="mt-8 inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-medium bg-gray-100/70 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/30 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+            >
+              <Download size={18} />
+              Download CV
+            </a>
+
+            <div className="mt-auto flex justify-center space-x-8 py-6">
+              <a
+                href="https://github.com/Enriquedonaire"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+              >
+                <Github size={24} />
+              </a>
+              <a
+                href="https://linkedin.com/in/enrique-donaire"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+              >
+                <Linkedin size={24} />
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+    </>
   );
 };
 
