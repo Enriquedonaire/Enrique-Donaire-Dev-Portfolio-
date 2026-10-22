@@ -80,7 +80,7 @@ const projects: Project[] = [
     id: 8,
     title: "Miranda Hotel",
     description: "Hotel landing page with Express backend. Classical style using BEM and responsive layout design.",
-    image: "https://www.barcelonairporthotel.com/wp-content/uploads/2023/09/Deluxe-2022-1.jpg",
+    image: import.meta.env.BASE_URL + 'hotel-miranda.jpg',
     tags: ["JavaScript", "NodeJS", "Express", "BEM"],
     link: "https://enriquedonaire.github.io/Hotel-Miranda-WebPage"
   },
@@ -120,7 +120,7 @@ const projects: Project[] = [
     id: 12,
     title: "CalculatorJS",
     description: "Simple and efficient web calculator with backend in Node and Express. Styled using BEM structure.",
-    image: "https://png.pngtree.com/thumb_back/fw800/background/20230618/pngtree-cartoon-style-3d-render-of-calculator-and-math-symbols-on-background-image_3631042.jpg",
+    image: import.meta.env.BASE_URL + 'calculator-js.jpg',
     tags: ["JavaScript", "NodeJS", "Express", "BEM"],
     link: "https://enriquedonaire.github.io/JS-Calculator-Assignment"
   },
@@ -136,7 +136,7 @@ const Projects = () => {
     <Section
       id="projects"
       title="Projects"
-      subtitle="Check out some of my recent work"
+      subtitle="Selected projects, from vanilla JavaScript to full-stack Next.js apps"
     >
       <div className="flex flex-wrap justify-center mb-10 gap-2">
         <motion.button

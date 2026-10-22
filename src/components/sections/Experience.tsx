@@ -9,69 +9,76 @@ import ParticleBackground from "@/components/common/ParticleBackground";
 
 const experiences: ExperienceType[] = [
   {
+    id: 0,
+    title: "Front-End Developer · Technical Lead",
+    company: "SQLI",
+    period: "Sep 2025 - Present",
+    location: "Barcelona - Hybrid",
+    image: "",
+    description: [
+      "Lead front-end architecture for IPCOM (isopartner.nl), a headless B2B e-commerce platform on Next.js and TypeScript with a BFF over Payload CMS, Strapi, Vendure and the iHub ERP, plus Keycloak/OAuth authentication",
+      "Set the team's AI-native workflow with Claude Code: CLAUDE.md conventions, reusable prompt patterns, review gates for AI-generated code and agentic MCP / tool-use flows",
+      "Audited a BFF migration across 4 branches and surfaced 12 architectural risks before implementation",
+      "Built scalable React/TypeScript components for the Nespresso global e-commerce ecosystem, with WCAG-aligned accessibility improvements",
+      "Quality and delivery with Jest/Vitest, React Testing Library, Cypress/Playwright, Docker and GitHub Actions",
+    ],
+    skills: ["Next.js", "React", "TypeScript", "Claude Code", "MCP", "BFF", "Keycloak", "Vendure", "Playwright", "Vitest"]
+  },
+  {
     id: 1,
     title: "Front-End Developer",
     company: "Henko-AI",
-    period: "February 2024 - Present",
+    period: "Feb 2024 - Aug 2025",
     location: "Remote - Spain",
     image: "henko-ai.jpeg",
     description: [
-      "Spearheading the development of a Progressive Web App with an emphasis on intuitive interfaces and responsive designs",
-      "Successfully migrated legacy platforms to modern frameworks, utilizing NextJS, ReactJS, Redux, and TailwindCSS",
-      "Designed and implemented dynamic interfaces with GraphQL and AI APIs to enhance functionality and user experience",
-      "Automated business-critical operations, improving efficiency across pharmaceutical shipment and payment processes",
-      "Integrated advanced AI technologies including OpenAI, Whisper AI, Gladia AI, and Speech.io to build intuitive interfaces",
-      "Collaborated with cross-functional teams to gather requirements and provide ongoing support, ensuring satisfaction and project success",
+      "Shipped LLM and speech-AI features to production, integrating OpenAI, Whisper, Gladia and Speech.io APIs into a Progressive Web App",
+      "Built advertising-metrics dashboards and AI-driven campaign suggestions based on predictive analytics",
+      "Migrated legacy platforms to Next.js, React, Redux, Node.js and Tailwind CSS, with GraphQL and Supabase data layers",
     ],
-    skills: ["ReactJS", "NextJS", "Redux", "TailwindCSS", "GraphQL", "AI Integration", "AWS", "OpenAI", "Whisper AI", "Gladia AI", "Speech.io"]
+    skills: ["Next.js", "React", "Redux", "Tailwind CSS", "GraphQL", "Supabase", "OpenAI", "Whisper", "Gladia", "Speech.io"]
   },
   {
     id: 2,
     title: "Front-End Developer (Vue.js)",
     company: "isEazy LMS",
-    period: "March 2023 - February 2024",
+    period: "Mar 2023 - Feb 2024",
     location: "Remote - Spain",
     image: "iseazy-lms.jpeg",
     description: [
-      "Directed the evolution and optimization of a Progressive Web Application (PWA), prioritizing mobile-first design and scalability",
-      "Drove success across 14 Agile-Scrum sprints, ensuring the seamless delivery of features through active participation in sprint planning, stand-ups, and presentations",
-      "Championed  a  comprehensive  migration  from  outdatedtechnologies ( JavaScript/Typescript ES5) to a modern stack using Vite, Vue 3, NextJS and TailwindCSS.",
-      "Improved code quality and collaboration through consistent contributions to private and open-source projects, leveraging GitHub workflows",
-      "Implemented CI/CD pipelines and automated testing frameworks, ensuring high-quality code delivery and reducing deployment times",
+      "Evolved and maintained the main product, a mobile-first Progressive Web App for corporate e-learning",
+      "Led the migration of the legacy platform (PHP 5.5 and JavaScript ES5) to Laravel, Vite, Vue 3, Next.js and Tailwind CSS",
+      "Delivered across 14 Agile-Scrum sprints with GitHub pull-request and code-review workflows",
     ],
-    skills: ["Vue.js", "Vite", "NextJS",  "ReactJS", "TailwindCSS", "PWA", "Agile/Scrum", "GitHub", "Open Source", "JavaScript", "TypeScript"]
+    skills: ["Vue 3", "Vite", "Next.js", "Laravel", "Tailwind CSS", "PWA", "Agile/Scrum", "TypeScript"]
   },
   {
     id: 3,
     title: "Software Engineer",
     company: "atSistemas",
-    period: "March 2022 - January 2023",
+    period: "Mar 2022 - Jan 2023",
     location: "Remote - Spain",
     image: "atSitemas2.jpg",
     description: [
-      "Architected and deployed dynamic web solutions tailored to client specifications, surpassing expectations and boosting operational efficiency",
-      "Streamlined development workflows by integrating cutting-edge technologies, driving performance optimization across multiple projects",
-      "Leveraged Next.js to develop fast, SEO-optimized web applications with server-side rendering and API routes, enhancing user experience and maintainability",
-      "Implemented CI/CD pipelines and automated testing frameworks, ensuring high-quality code delivery and reducing deployment times",
-      "Collaborated with cross-functional teams to gather requirements and provide ongoing support"
+      "Built React + TypeScript integrations with SharePoint sites for enterprise clients",
+      "Created automations for pharmaceutical shipments and payments",
+      "Developed web solutions with Node.js, Express and AWS, and SEO-optimized Next.js applications with server-side rendering and API routes",
     ],
-    skills: ["React", "NextJS", "JavaScript", "RESTful APIs", "GitHub", "Front-end"]
+    skills: ["React", "TypeScript", "SharePoint", "Next.js", "Node.js", "Express", "AWS"]
   },
   {
     id: 4,
-    title: "MERN-Stack Developer",
+    title: "Full-Stack Developer (MERN)",
     company: "Freelance",
-    period: "May 2020 - March 2022",
+    period: "May 2020 - Feb 2022",
     location: "Granada - Spain",
     image: "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     description: [
-      "Delivered custom software solutions to over 10 clients, ensuring scalability and seamless functionality",
-      "Cultivated expertise in NextJS, ReactJS, AWS ( Ec2, S3, DynamoDBand Lambda) REST APIs, MongoDB, Supabase and the MERN stack,ensuring robust application performance",
-      "Implemented responsive designs and user-friendly interfaces, enhancing user experience and engagement",
-      "Collaborated with clients to gather requirements and provide ongoing support, ensuring satisfaction and project success",
-      "Developed and maintained comprehensive documentation for all projects, ensuring clarity and ease of understanding for future developers"
+      "Delivered custom web applications for more than 10 clients",
+      "Built with Node.js, Express, React, Next.js, MongoDB and Supabase, deployed on AWS (EC2, S3, DynamoDB, Lambda)",
+      "Gathered requirements directly with clients and provided ongoing support and documentation",
     ],
-    skills: ["MongoDB", "Express.js", "React","NextJS", "Node.js", "AWS", "REST APIs"]
+    skills: ["MongoDB", "Express", "React", "Next.js", "Node.js", "Supabase", "AWS", "REST APIs"]
   }
 ];
 
@@ -142,6 +149,9 @@ const ExperienceCard = ({ exp }: { exp: ExperienceType }) => {
           ))}
         </div>
         {/* Botón de enlace a la compañía */}
+        {exp.company === "SQLI" && (
+          <a href="https://www.sqli.com" target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-4 py-2 bg-cyan-700 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors">Learn more</a>
+        )}
         {exp.company === "Henko-AI" && (
           <a href="https://henko-ai.com" target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-4 py-2 bg-cyan-700 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors">Learn more</a>
         )}
@@ -152,7 +162,7 @@ const ExperienceCard = ({ exp }: { exp: ExperienceType }) => {
           <a href="https://www.knowmadmood.com/es" target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-4 py-2 bg-cyan-700 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors">Learn more</a>
         )}
         {exp.company === "Freelance" && (
-          <a href="https://github.com/Enriquedonaire" target="_blank" rel="noopener noreferrer" className="inline-block mt-20 px-4 py-2 bg-cyan-700 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors ">Learn more</a>
+          <a href="https://github.com/Enriquedonaire" target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-4 py-2 bg-cyan-700 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors ">Learn more</a>
         )}
       </CardContent>
     </Card>
@@ -179,34 +189,25 @@ const Experience = () => {
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto mb-8"></div>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            My professional journey in web and full-stack application development.
+            Six years building web platforms, from freelance MERN projects to technical lead on international e-commerce.
           </p>
         </motion.div>
         <div className="relative flex flex-col items-center justify-center min-h-[1000px]">
           <div className="absolute inset-0 flex items-center justify-center z-0">
             <ExperienceCanvas />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-x-0 md:gap-x-[23vw] gap-y-12 md:gap-y-40 w-full max-w-[2000px] relative z-10 pt-10 md:pt-20 pb-10 md:pb-20 px-0 md:px-4 pointer-events-none">
-            <div className="flex justify-end items-end">
-              <motion.div whileHover={{ scale: 1.09 }} className="w-full max-w-[540px] min-h-[420px] transition-all duration-300 pointer-events-auto">
-                {experiences[0] && <ExperienceCard exp={experiences[0]} />}
-              </motion.div>
-            </div>
-            <div className="flex justify-start items-end">
-              <motion.div whileHover={{ scale: 1.07 }} className="w-full max-w-[540px] min-h-[420px] transition-all duration-300 pointer-events-auto">
-                {experiences[1] && <ExperienceCard exp={experiences[1]} />}
-              </motion.div>
-            </div>
-            <div className="flex justify-end items-start">
-              <motion.div whileHover={{ scale: 1.07 }} className="w-full max-w-[540px] min-h-[420px] transition-all duration-300 pointer-events-auto">
-                {experiences[2] && <ExperienceCard exp={experiences[2]} />}
-              </motion.div>
-            </div>
-            <div className="flex justify-start items-start">
-              <motion.div whileHover={{ scale: 1.07 }} className="w-full max-w-[540px] min-h-[420px] transition-all duration-300 pointer-events-auto">
-                {experiences[3] && <ExperienceCard exp={experiences[3]} />}
-              </motion.div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-0 md:gap-x-[23vw] gap-y-12 md:gap-y-24 w-full max-w-[2000px] relative z-10 pt-10 md:pt-20 pb-10 md:pb-20 px-0 md:px-4 pointer-events-none">
+            {experiences.map((exp, i) => {
+              const isLastOdd = i === experiences.length - 1 && experiences.length % 2 === 1;
+              const align = isLastOdd ? 'md:col-span-2 justify-center' : i % 2 === 0 ? 'justify-end' : 'justify-start';
+              return (
+                <div key={exp.id} className={`flex ${align}`}>
+                  <motion.div whileHover={{ scale: 1.05 }} className="w-full max-w-[540px] min-h-[420px] transition-all duration-300 pointer-events-auto">
+                    <ExperienceCard exp={exp} />
+                  </motion.div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

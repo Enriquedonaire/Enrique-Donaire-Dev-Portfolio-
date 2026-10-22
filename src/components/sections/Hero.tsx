@@ -23,10 +23,10 @@ const Hero = ({ loading }: HeroProps) => {
     if (typedEl.current) {
       typedInstance.current = new Typed(typedEl.current, {
         strings: [
-          'MERN Stack Developer',
-          'AI Frontend Engineer',
-          'Vue.js Expert',
-          'UI/UX Design Enthusiast',
+          'AI-Native Full-Stack Engineer',
+          'Front-End Tech Lead @ SQLI',
+          'React · Next.js · TypeScript',
+          'MD building software for healthcare',
         ],
         typeSpeed: 70,
         backSpeed: 50,
@@ -153,8 +153,9 @@ const Hero = ({ loading }: HeroProps) => {
               className="text-gray-600 dark:text-gray-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto"
               variants={itemVariants}
             >
-              Versatile and results-driven developer with five years of expertise in
-              crafting high-performance web applications using cutting-edge technologies.
+              Front-end tech lead with 6 years shipping production web apps in React,
+              Next.js, TypeScript and Node.js. I build AI-native, with Claude Code and
+              LLM workflows, and bring 16 years of medicine to healthcare software.
             </motion.p>
 
             <motion.div

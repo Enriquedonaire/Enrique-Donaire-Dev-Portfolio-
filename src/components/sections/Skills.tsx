@@ -38,7 +38,10 @@ const skills: Skill[] = [
   { name: "Git/GitHub", level: 85, category: "tools" },
   { name: "Figma", level: 80, category: "tools" },
   { name: "Apollo", level: 75, category: "tools" },
-  { name: "CI/CD", level: 70, category: "tools" },
+  { name: "CI/CD (GitHub Actions)", level: 75, category: "tools" },
+  { name: "Claude Code & LLM workflows", level: 90, category: "tools" },
+  { name: "Docker", level: 70, category: "tools" },
+  { name: "Testing (Jest, Vitest, Playwright)", level: 80, category: "tools" },
   
   // Soft skills
   { name: "Teamwork", level: 95, category: "soft" },
@@ -214,7 +217,7 @@ const SkillsSection = () => {
     <Section
       id="skills"
       title="Skills"
-      subtitle="My technical skills and competencies"
+      subtitle="The stack I use to ship, and how I work with teams"
       className="mt-[-75px] py-12 "
     >
       {/* Tech Stack Cloud */}
