@@ -72,19 +72,19 @@ const CameraIntro = ({ play }: { play: boolean }) => {
 const ExperienceCanvas = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [playIntro, setPlayIntro] = useState(false);
+  const [inView, setInView] = useState(false);
 
-  // Play the intro the first time the robot is mostly on screen.
+  // Play the intro the first time the robot is mostly on screen, and keep the
+  // render loop running only while it is visible (continuous slow rotation).
   useEffect(() => {
     const el = wrapperRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setPlayIntro(true);
-          observer.disconnect();
-        }
+        setInView(entry.isIntersecting);
+        if (entry.intersectionRatio >= 0.6) setPlayIntro(true);
       },
-      { threshold: 0.6 },
+      { threshold: [0, 0.6] },
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -95,7 +95,7 @@ const ExperienceCanvas = () => {
       <DragHint className="top-0" />
       <Canvas
         shadows
-        frameloop='demand'
+        frameloop={inView ? 'always' : 'demand'}
         dpr={[1, 2]}
         gl={{ preserveDrawingBuffer: true }}
         camera={{
@@ -109,7 +109,7 @@ const ExperienceCanvas = () => {
         <Suspense fallback={null}>
           <OrbitControls
             autoRotate
-            autoRotateSpeed={4}
+            autoRotateSpeed={1.5}
             enableZoom={false}
             enablePan={true}
             maxPolarAngle={Math.PI / 1.8}
