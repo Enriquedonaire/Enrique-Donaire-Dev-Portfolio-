@@ -36,9 +36,9 @@ const ExperienceCanvas = () => {
             maxPolarAngle={Math.PI / 1.8}
             minPolarAngle={0}
             enableRotate={true} // Permite rotar el modelo con mouse/touch
-            target={[0, 0.5, 0]}
+            target={[0, 1.2, 0]}
           />
-          <ExperienceModel scale={1.75} />
+          <ExperienceModel scale={2.1} />
           <Preload all />
         </Suspense>
       </Canvas>

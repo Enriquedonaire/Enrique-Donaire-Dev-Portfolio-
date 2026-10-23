@@ -13,9 +13,9 @@ const BASE = import.meta.env.BASE_URL;
 type Cover = { kind: 'photo'; src: string } | { kind: 'logo'; src: string };
 const covers: Record<string, Cover> = {
   'SQLI': { kind: 'logo', src: 'experience/sqli-mask.png' },
-  'Henko-AI': { kind: 'logo', src: 'experience/henko-mask.png' },
+  'Henko-AI': { kind: 'photo', src: 'experience/henko-cover.jpg' },
   'isEazy LMS': { kind: 'photo', src: 'experience/iseazy-cover.jpg' },
-  'atSistemas': { kind: 'photo', src: 'experience/atsistemas-cover.jpg' },
+  'atSistemas': { kind: 'photo', src: 'experience/knowmad-cover.jpg' },
   'Freelance': { kind: 'photo', src: 'experience/freelance-cover.jpg' },
 };
 
@@ -107,7 +107,7 @@ const CardFront = ({ exp }: { exp: ExperienceType }) => {
   return (
     <div className="absolute inset-0 rounded-2xl overflow-hidden [backface-visibility:hidden] bg-gradient-to-br from-[#1b1440] via-[#141a2e] to-[#06283a] border border-white/10 shadow-xl">
       {cover?.kind === 'photo' && (
-        <img src={BASE + cover.src} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-60" />
+        <img src={BASE + cover.src} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
       )}
       {cover?.kind === 'logo' && (
         <div
@@ -121,8 +121,8 @@ const CardFront = ({ exp }: { exp: ExperienceType }) => {
           }}
         />
       )}
-      {/* Overlay keeps the text readable in both themes */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f1a] via-[#0b0f1a]/70 to-[#0b0f1a]/20" />
+      {/* Covers keep their original colours; only the bottom fades to dark so the text stays readable */}
+      <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-[#0b0f1a] via-[#0b0f1a]/85 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
         <h3 className="text-2xl font-bold leading-tight">{exp.title}</h3>
         <div className="flex items-center mt-2 text-purple-300">
