@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
+import DragHint from "./DragHint";
 
 const Earth = ({ scale = 1.2 }) => {
   const earth = useGLTF(import.meta.env.BASE_URL + "planet-scene/scene.gltf");
@@ -11,7 +12,8 @@ const Earth = ({ scale = 1.2 }) => {
 
 const EarthCanvas = () => {
   return (
-    <div className="w-full h-[350px] md:h-[420px] lg:h-[480px] xl:h-[520px] aspect-square mx-auto">
+    <div className="relative w-full h-[350px] md:h-[420px] lg:h-[480px] xl:h-[520px] aspect-square mx-auto">
+      <DragHint className="-top-10" />
       <Canvas
         shadows
         frameloop='demand'

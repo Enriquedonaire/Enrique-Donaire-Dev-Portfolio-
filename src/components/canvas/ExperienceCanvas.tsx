@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
+import DragHint from "./DragHint";
 
 const ExperienceModel = ({ scale = 2.5 }) => {
   const model = useGLTF(import.meta.env.BASE_URL + "experience scene/scene.gltf");
@@ -11,7 +12,8 @@ const ExperienceModel = ({ scale = 2.5 }) => {
 
 const ExperienceCanvas = () => {
   return (
-    <div className="w-full h-[950px] md:h-[900px] flex items-center justify-center">
+    <div className="relative w-full h-[950px] md:h-[900px] flex items-center justify-center">
+      <DragHint className="-top-12" />
       <Canvas
         shadows
         frameloop='demand'

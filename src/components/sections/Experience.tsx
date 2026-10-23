@@ -86,7 +86,7 @@ const ExperienceCard = ({ exp }: { exp: ExperienceType }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <Card
-      className="relative overflow-hidden transition-all duration-300 w-full max-w-[540px] min-h-[420px] group
+      className="relative overflow-hidden transition-all duration-300 w-full max-w-[540px] h-full min-h-[420px] flex flex-col group
         dark:bg-gradient-to-br dark:from-[#181c2a]/95 dark:to-[#0a0a0a]/95 dark:border-none
         bg-white/95 border border-gray-200
         backdrop-blur-sm
@@ -128,7 +128,7 @@ const ExperienceCard = ({ exp }: { exp: ExperienceType }) => {
           </div>
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex flex-col flex-1">
         <ul className="space-y-2 mb-4">
           {exp.description.map((item, i) => (
             <li key={i} className="text-gray-800 dark:text-gray-300 flex">
@@ -148,7 +148,8 @@ const ExperienceCard = ({ exp }: { exp: ExperienceType }) => {
             </Badge>
           ))}
         </div>
-        {/* Botón de enlace a la compañía */}
+        {/* Company link, pinned to the bottom so every card lines up */}
+        <div className="mt-auto">
         {exp.company === "SQLI" && (
           <a href="https://www.sqli.com" target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-4 py-2 bg-cyan-700 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors">Learn more</a>
         )}
@@ -162,8 +163,9 @@ const ExperienceCard = ({ exp }: { exp: ExperienceType }) => {
           <a href="https://www.knowmadmood.com/es" target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-4 py-2 bg-cyan-700 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors">Learn more</a>
         )}
         {exp.company === "Freelance" && (
-          <a href="https://github.com/Enriquedonaire" target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-4 py-2 bg-cyan-700 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors ">Learn more</a>
+          <a href="https://github.com/Enriquedonaire" target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-4 py-2 bg-cyan-700 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors">Learn more</a>
         )}
+        </div>
       </CardContent>
     </Card>
   );
@@ -196,13 +198,13 @@ const Experience = () => {
           <div className="absolute inset-0 flex items-center justify-center z-0">
             <ExperienceCanvas />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-0 md:gap-x-[23vw] gap-y-12 md:gap-y-24 w-full max-w-[2000px] relative z-10 pt-10 md:pt-20 pb-10 md:pb-20 px-0 md:px-4 pointer-events-none">
+          <div className="grid grid-cols-1 md:grid-cols-2 auto-rows-fr gap-x-0 md:gap-x-[23vw] gap-y-12 md:gap-y-24 w-full max-w-[2000px] relative z-10 pt-10 md:pt-20 pb-10 md:pb-20 px-0 md:px-4 pointer-events-none">
             {experiences.map((exp, i) => {
               const isLastOdd = i === experiences.length - 1 && experiences.length % 2 === 1;
               const align = isLastOdd ? 'md:col-span-2 justify-center' : i % 2 === 0 ? 'justify-end' : 'justify-start';
               return (
-                <div key={exp.id} className={`flex ${align}`}>
-                  <motion.div whileHover={{ scale: 1.05 }} className="w-full max-w-[540px] min-h-[420px] transition-all duration-300 pointer-events-auto">
+                <div key={exp.id} className={`flex h-full ${align}`}>
+                  <motion.div whileHover={{ scale: 1.05 }} className="w-full max-w-[540px] h-full min-h-[420px] transition-all duration-300 pointer-events-auto">
                     <ExperienceCard exp={exp} />
                   </motion.div>
                 </div>
