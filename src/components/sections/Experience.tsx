@@ -225,7 +225,7 @@ const Experience = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
           {/* Robot: sticky while the timeline scrolls */}
           <div className="relative h-[420px] lg:h-auto">
-            <div className="lg:sticky lg:top-24 h-[420px] lg:h-[calc(100vh-8rem)]">
+            <div className="lg:sticky lg:top-24 h-[420px] lg:h-[calc(100vh-7rem)] lg:-ml-[3vw] lg:w-[calc(100%+3vw+3rem)] 2xl:-ml-[8vw] 2xl:w-[calc(100%+8vw+3rem)]">
               <ExperienceCanvas />
             </div>
           </div>
