@@ -31,7 +31,7 @@ function App() {
         ) : (
           <>
             <Header />
-            <main className="overflow-hidden">
+            <main className="overflow-x-clip">
               <Hero loading={loading} />
               <About />
               <Experience />

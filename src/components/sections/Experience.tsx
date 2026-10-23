@@ -1,11 +1,31 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Briefcase, Calendar } from "lucide-react";
+import { Briefcase, Calendar, MapPin, RotateCw } from "lucide-react";
 import { Experience as ExperienceType } from '@/types';
 import ExperienceCanvas from "@/components/canvas/ExperienceCanvas";
 import ParticleBackground from "@/components/common/ParticleBackground";
+
+const BASE = import.meta.env.BASE_URL;
+
+// Card covers: a photo where the company publishes one, otherwise its logo.
+// Logos are rendered as a mask so they always use our palette colour.
+type Cover = { kind: 'photo'; src: string } | { kind: 'logo'; src: string };
+const covers: Record<string, Cover> = {
+  'SQLI': { kind: 'logo', src: 'experience/sqli-mask.png' },
+  'Henko-AI': { kind: 'logo', src: 'experience/henko-mask.png' },
+  'isEazy LMS': { kind: 'photo', src: 'experience/iseazy-cover.jpg' },
+  'atSistemas': { kind: 'photo', src: 'experience/atsistemas-cover.jpg' },
+  'Freelance': { kind: 'photo', src: 'experience/freelance-cover.jpg' },
+};
+
+const companyLinks: Record<string, string> = {
+  'SQLI': 'https://www.sqli.com',
+  'Henko-AI': 'https://henko-ai.com',
+  'isEazy LMS': 'https://www.iseazy.com/es/lms',
+  'atSistemas': 'https://www.knowmadmood.com/es',
+  'Freelance': 'https://github.com/Enriquedonaire',
+};
 
 const experiences: ExperienceType[] = [
   {
@@ -82,92 +102,99 @@ const experiences: ExperienceType[] = [
   }
 ];
 
-const ExperienceCard = ({ exp }: { exp: ExperienceType }) => {
-  const [isHovered, setIsHovered] = useState(false);
+const CardFront = ({ exp }: { exp: ExperienceType }) => {
+  const cover = covers[exp.company];
   return (
-    <Card
-      className="relative overflow-hidden transition-all duration-300 w-full max-w-[540px] h-full min-h-[420px] flex flex-col group
-        dark:bg-gradient-to-br dark:from-[#181c2a]/95 dark:to-[#0a0a0a]/95 dark:border-none
-        bg-white/95 border border-gray-200
-        backdrop-blur-sm
-        z-10
-      "
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+    <div className="absolute inset-0 rounded-2xl overflow-hidden [backface-visibility:hidden] bg-gradient-to-br from-[#1b1440] via-[#141a2e] to-[#06283a] border border-white/10 shadow-xl">
+      {cover?.kind === 'photo' && (
+        <img src={BASE + cover.src} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-60" />
+      )}
+      {cover?.kind === 'logo' && (
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-10 top-10 bottom-36 bg-gradient-to-r from-purple-300 to-cyan-300 opacity-90"
+          style={{
+            WebkitMaskImage: `url(${BASE + cover.src})`, maskImage: `url(${BASE + cover.src})`,
+            WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat',
+            WebkitMaskPosition: 'center', maskPosition: 'center',
+            WebkitMaskSize: 'contain', maskSize: 'contain',
+          }}
+        />
+      )}
+      {/* Overlay keeps the text readable in both themes */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f1a] via-[#0b0f1a]/70 to-[#0b0f1a]/20" />
+      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+        <h3 className="text-2xl font-bold leading-tight">{exp.title}</h3>
+        <div className="flex items-center mt-2 text-purple-300">
+          <Briefcase className="h-4 w-4 mr-2" aria-hidden="true" />
+          <span className="font-medium">{exp.company}</span>
+        </div>
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2 text-sm text-cyan-200">
+          <span className="inline-flex items-center"><Calendar className="h-4 w-4 mr-1.5" aria-hidden="true" />{exp.period}</span>
+          <span className="inline-flex items-center"><MapPin className="h-4 w-4 mr-1.5" aria-hidden="true" />{exp.location}</span>
+        </div>
+        <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-gray-300">
+          <RotateCw className="h-3.5 w-3.5" aria-hidden="true" /> Hover or tap for details
+        </span>
+      </div>
+    </div>
+  );
+};
+
+const CardBack = ({ exp }: { exp: ExperienceType }) => (
+  <div className="absolute inset-0 rounded-2xl overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)] bg-white dark:bg-gradient-to-br dark:from-[#181c2a] dark:to-[#0a0a0a] border border-gray-200 dark:border-white/10 shadow-xl flex flex-col">
+    <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-purple-400 via-cyan-400 to-purple-400" />
+    <div className="p-6 pb-3">
+      <h3 className="text-lg font-bold text-blue-900 dark:text-white">{exp.title} · <span className="text-purple-700 dark:text-purple-300">{exp.company}</span></h3>
+    </div>
+    <div className="px-6 flex-1 overflow-y-auto">
+      <ul className="space-y-2 mb-4 text-sm">
+        {exp.description.map((item, i) => (
+          <li key={i} className="text-gray-800 dark:text-gray-300 flex">
+            <span className="text-purple-600 dark:text-purple-400 mr-2" aria-hidden="true">•</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <div className="flex flex-wrap gap-2">
+        {exp.skills.map((skill, i) => (
+          <Badge
+            key={i}
+            variant="outline"
+            className={`${i % 2 === 0 ? "bg-purple-500/10 text-purple-700 dark:text-purple-300 border-purple-500/30" : "bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border-cyan-500/30"}`}
+          >
+            {skill}
+          </Badge>
+        ))}
+      </div>
+    </div>
+    <div className="p-6 pt-4">
+      {companyLinks[exp.company] && (
+        <a href={companyLinks[exp.company]} target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-2 bg-cyan-700 hover:bg-cyan-600 text-white rounded-lg font-semibold transition-colors">Learn more</a>
+      )}
+    </div>
+  </div>
+);
+
+const FlipCard = ({ exp }: { exp: ExperienceType }) => {
+  const [flipped, setFlipped] = useState(false);
+  return (
+    <div
+      className="group relative h-[480px] w-full [perspective:1400px] cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-2xl"
+      tabIndex={0}
+      role="button"
+      aria-pressed={flipped}
+      aria-label={`${exp.title} at ${exp.company}, ${exp.period}. Show details`}
+      onClick={() => setFlipped((f) => !f)}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setFlipped((f) => !f); } }}
     >
-      {/* Enhanced glow effect */}
       <div
-        className="absolute inset-0 -z-10 rounded-2xl transition-opacity duration-300"
-        style={{
-          background: 'radial-gradient(circle at center, rgba(124, 58, 237, 0.15), rgba(6, 182, 212, 0.15))',
-          filter: 'blur(20px)',
-          transform: 'scale(1.2)',
-          opacity: isHovered ? 1 : 0,
-        }}
-      />
-
-      {/* Animated border gradient */}
-      <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-purple-400 via-cyan-400 to-purple-400 dark:from-purple-500 dark:via-cyan-500 dark:to-purple-500 bg-[length:100%_200%] animate-gradient-y"></div>
-
-      <CardHeader>
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
-          <div>
-            <CardTitle className="text-xl md:text-2xl font-bold text-blue-900 dark:text-white mb-1">
-              {exp.title}
-            </CardTitle>
-            <div className="flex items-center mt-2 text-purple-600 dark:text-purple-400">
-              <Briefcase className="h-4 w-4 mr-2" />
-              <span>{exp.company}</span>
-            </div>
-          </div>
-          <div className="flex items-center text-cyan-700 dark:text-cyan-400">
-            <Calendar className="h-4 w-4 mr-2" />
-            <span>{exp.period}</span>
-            <span className="mx-2">•</span>
-            <span>{exp.location}</span>
-          </div>
-        </div>
-      </CardHeader>
-      <CardContent className="flex flex-col flex-1">
-        <ul className="space-y-2 mb-4">
-          {exp.description.map((item, i) => (
-            <li key={i} className="text-gray-800 dark:text-gray-300 flex">
-              <span className="text-purple-600 dark:text-purple-500 mr-2">•</span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-        <div className="flex flex-wrap gap-2 mt-4">
-          {exp.skills.map((skill, i) => (
-            <Badge
-              key={i}
-              variant="outline"
-              className={`${i % 2 === 0 ? "bg-purple-500/10 text-purple-700 dark:text-purple-300 border-purple-500/30" : "bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border-cyan-500/30"}`}
-            >
-              {skill}
-            </Badge>
-          ))}
-        </div>
-        {/* Company link, pinned to the bottom so every card lines up */}
-        <div className="mt-auto">
-        {exp.company === "SQLI" && (
-          <a href="https://www.sqli.com" target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-4 py-2 bg-cyan-700 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors">Learn more</a>
-        )}
-        {exp.company === "Henko-AI" && (
-          <a href="https://henko-ai.com" target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-4 py-2 bg-cyan-700 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors">Learn more</a>
-        )}
-        {exp.company === "isEazy LMS" && (
-          <a href="https://www.iseazy.com/es/lms" target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-4 py-2 bg-cyan-700 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors">Learn more</a>
-        )}
-        {exp.company === "atSistemas" && (
-          <a href="https://www.knowmadmood.com/es" target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-4 py-2 bg-cyan-700 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors">Learn more</a>
-        )}
-        {exp.company === "Freelance" && (
-          <a href="https://github.com/Enriquedonaire" target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-4 py-2 bg-cyan-700 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors">Learn more</a>
-        )}
-        </div>
-      </CardContent>
-    </Card>
+        className={`relative h-full w-full transition-transform duration-700 motion-reduce:transition-none [transform-style:preserve-3d] md:group-hover:[transform:rotateY(180deg)] ${flipped ? '[transform:rotateY(180deg)]' : ''}`}
+      >
+        <CardFront exp={exp} />
+        <CardBack exp={exp} />
+      </div>
+    </div>
   );
 };
 
@@ -194,23 +221,32 @@ const Experience = () => {
             Six years building web platforms, from freelance MERN projects to leading the front-end of an international B2B platform.
           </p>
         </motion.div>
-        <div className="relative flex flex-col items-center justify-center min-h-[1000px]">
-          <div className="absolute inset-0 flex items-center justify-center z-0">
-            <ExperienceCanvas />
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+          {/* Robot: sticky while the timeline scrolls */}
+          <div className="relative h-[420px] lg:h-auto">
+            <div className="lg:sticky lg:top-24 h-[420px] lg:h-[calc(100vh-8rem)]">
+              <ExperienceCanvas />
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 auto-rows-fr gap-x-0 md:gap-x-[23vw] gap-y-12 md:gap-y-24 w-full max-w-[2000px] relative z-10 pt-10 md:pt-20 pb-10 md:pb-20 px-0 md:px-4 pointer-events-none">
-            {experiences.map((exp, i) => {
-              const isLastOdd = i === experiences.length - 1 && experiences.length % 2 === 1;
-              const align = isLastOdd ? 'md:col-span-2 justify-center' : i % 2 === 0 ? 'justify-end' : 'justify-start';
-              return (
-                <div key={exp.id} className={`flex h-full ${align}`}>
-                  <motion.div whileHover={{ scale: 1.05 }} className="w-full max-w-[540px] h-full min-h-[420px] transition-all duration-300 pointer-events-auto">
-                    <ExperienceCard exp={exp} />
-                  </motion.div>
-                </div>
-              );
-            })}
-          </div>
+
+          {/* Timeline */}
+          <ol className="relative border-l-2 border-purple-500/30 dark:border-purple-400/30 ml-3 space-y-14">
+            {experiences.map((exp) => (
+              <motion.li
+                key={exp.id}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.6 }}
+                className="relative pl-8"
+              >
+                <span aria-hidden="true" className="absolute -left-[9px] top-1 h-4 w-4 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 ring-4 ring-white dark:ring-[#121212]" />
+                <p className="mb-3 text-sm font-semibold text-cyan-700 dark:text-cyan-400">{exp.period}</p>
+                <FlipCard exp={exp} />
+              </motion.li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>

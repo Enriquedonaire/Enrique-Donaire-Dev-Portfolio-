@@ -12,8 +12,8 @@ const ExperienceModel = ({ scale = 2.5 }) => {
 
 const ExperienceCanvas = () => {
   return (
-    <div className="relative w-full h-[950px] md:h-[900px] flex items-center justify-center">
-      <DragHint className="-top-12" />
+    <div className="relative w-full h-full flex items-center justify-center">
+      <DragHint className="top-0" />
       <Canvas
         shadows
         frameloop='demand'
