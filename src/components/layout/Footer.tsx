@@ -18,7 +18,7 @@ const Footer = () => {
               <span className="animate-gradient-text">Enrique Donaire</span>
             </Link>
             <p className="mt-2 text-gray-600 dark:text-gray-400">
-              AI-Native Full-Stack Engineer · Front-End Tech Lead
+              Senior Full-Stack Engineer · Frontend Specialist
             </p>
           </div>
 

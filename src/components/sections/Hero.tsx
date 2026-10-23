@@ -23,9 +23,10 @@ const Hero = ({ loading }: HeroProps) => {
     if (typedEl.current) {
       typedInstance.current = new Typed(typedEl.current, {
         strings: [
-          'AI-Native Full-Stack Engineer',
-          'Front-End Tech Lead @ SQLI',
-          'React · Next.js · TypeScript',
+          'Senior Full-Stack Engineer',
+          'Frontend Specialist',
+          'React · Next.js · TypeScript · Node.js',
+          'AI & LLM Integration',
           'MD building software for healthcare',
         ],
         typeSpeed: 70,
@@ -153,9 +154,9 @@ const Hero = ({ loading }: HeroProps) => {
               className="text-gray-600 dark:text-gray-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto"
               variants={itemVariants}
             >
-              Front-end tech lead with 6 years shipping production web apps in React,
-              Next.js, TypeScript and Node.js. I build AI-native, with Claude Code and
-              LLM workflows, and bring 16 years of medicine to healthcare software.
+              Full-Stack Engineer with 6 years shipping production web apps in React,
+              Next.js, TypeScript and Node.js. Experienced in AI and LLM integration,
+              and bringing 16 years of medicine to healthcare software.
             </motion.p>
 
             <motion.div

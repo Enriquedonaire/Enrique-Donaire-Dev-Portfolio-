@@ -19,9 +19,9 @@ const About = () => {
 
         {/* Lado derecho: contenido estático, sin transición */}
         <div>
-          <h3 className="text-2xl font-bold mb-4">I'm Enrique Donaire, an AI-native full-stack engineer and physician</h3>
+          <h3 className="text-2xl font-bold mb-4">I'm Enrique Donaire, a Senior Full-Stack Engineer and physician</h3>
           <p className="text-gray-700 dark:text-gray-300 mb-6">
-            I'm the front-end technical lead on international client projects at SQLI: a headless B2B e-commerce platform for IPCOM (isopartner.nl) built on Next.js and a BFF over Payload CMS, Strapi and Vendure, and the global Nespresso e-commerce ecosystem. I set my team's AI-native workflow with Claude Code: shared conventions, prompt patterns, review gates for AI-generated code and agentic MCP flows.
+            At SQLI I'm a front-end developer on international client projects. I lead the front-end of IPCOM (isopartner.nl), a headless B2B e-commerce platform built on Next.js and a BFF over Payload CMS, Strapi and Vendure, and I also work on the global Nespresso e-commerce ecosystem. In the team I defined our AI-assisted workflow with Claude Code: shared conventions, prompt patterns, review gates for AI-generated code and agentic MCP flows.
           </p>
           <p className="text-gray-700 dark:text-gray-300 mb-6">
             Over 6 years I've moved from freelance MERN projects to atSistemas, isEazy and Henko-AI, where I shipped LLM and speech-AI features to production. Before code, I spent 16 years in medicine, the last 11 as an ophthalmologist. That clinical background shapes how I work: precise, user-focused, and careful with anything that touches people's data.
@@ -47,7 +47,7 @@ const About = () => {
             <div>
               <h4 className="font-semibold mb-2">Objective</h4>
               <p className="text-gray-700 dark:text-gray-300">
-                Build AI-native products, especially in digital health, where clinical insight and engineering meet.
+                Build products that use AI well, especially in digital health, where clinical insight and engineering meet.
               </p>
             </div>
           </div>

@@ -10,14 +10,14 @@ import ParticleBackground from "@/components/common/ParticleBackground";
 const experiences: ExperienceType[] = [
   {
     id: 0,
-    title: "Front-End Developer · Technical Lead",
+    title: "Front-End Developer",
     company: "SQLI",
     period: "Sep 2025 - Present",
     location: "Barcelona - Hybrid",
     image: "",
     description: [
-      "Lead front-end architecture for IPCOM (isopartner.nl), a headless B2B e-commerce platform on Next.js and TypeScript with a BFF over Payload CMS, Strapi, Vendure and the iHub ERP, plus Keycloak/OAuth authentication",
-      "Set the team's AI-native workflow with Claude Code: CLAUDE.md conventions, reusable prompt patterns, review gates for AI-generated code and agentic MCP / tool-use flows",
+      "Front-end lead for IPCOM (isopartner.nl), a headless B2B e-commerce platform on Next.js and TypeScript with a BFF over Payload CMS, Strapi, Vendure and the iHub ERP, plus Keycloak/OAuth authentication",
+      "Defined the team's AI-assisted workflow with Claude Code: shared conventions, reusable prompt patterns, review gates for AI-generated code and agentic MCP / tool-use flows",
       "Audited a BFF migration across 4 branches and surfaced 12 architectural risks before implementation",
       "Built scalable React/TypeScript components for the Nespresso global e-commerce ecosystem, with WCAG-aligned accessibility improvements",
       "Quality and delivery with Jest/Vitest, React Testing Library, Cypress/Playwright, Docker and GitHub Actions",
@@ -189,7 +189,7 @@ const Experience = () => {
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto mb-8"></div>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Six years building web platforms, from freelance MERN projects to technical lead on international e-commerce.
+            Six years building web platforms, from freelance MERN projects to leading the front-end of an international B2B platform.
           </p>
         </motion.div>
         <div className="relative flex flex-col items-center justify-center min-h-[1000px]">
